@@ -73,7 +73,8 @@ function morph(newHTML){
     root.innerHTML = newHTML;
     root.style.opacity = 1;
     if(root.querySelector('.counter')) animateCounters();
-    attachAnimations(); // re-attach scroll anims
+    attachAnimations();
+    attachExpToggles(); // new hook for Experience page
   },250);
 }
 
@@ -112,6 +113,19 @@ function attachAnimations(){
     entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
   }, {threshold:.3});
   root.querySelectorAll('.animate').forEach(el=>io.observe(el));
+}
+
+/* ---------- experience toggles ---------- */
+function attachExpToggles(){
+  root.querySelectorAll('.exp-card').forEach(card=>{
+    const btn = card.querySelector('.toggle-btn');
+    if(btn){
+      btn.addEventListener('click', ()=>{
+        card.classList.toggle('expanded');
+        btn.textContent = card.classList.contains('expanded') ? 'Collapse ▲' : 'Expand ▼';
+      });
+    }
+  });
 }
 </script>
 </body>
