@@ -2,9 +2,44 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8"/>
-  <title>Ridwan Bayrajée | Portfolio</title>
+  <title>Ridwan Bayrajee | Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" href="assets/css/morph.css"/>
+  <style>
+    /* ----------  home-page extras  ---------- */
+    :root[data-theme="light"]{
+      --grad:linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
+    }
+    :root[data-theme="dark"]{
+      --grad:linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+    }
+    .hero{
+      background:var(--grad);
+      padding:4rem 1rem 3rem;
+      border-radius:16px;
+      margin-bottom:2rem;
+      text-align:center;
+    }
+    .hero h1{font-size:2.6rem;margin-bottom:.5rem;}
+    .tag-line{
+      max-width:700px;margin:auto;
+      text-align:justify;text-justify:inter-word;
+      font-size:1.05rem;line-height:1.7;
+    }
+    .glass{
+      background:rgba(var(--rgb-card),.35);
+      backdrop-filter:blur(10px);
+      border:1px solid rgba(255,255,255,.15);
+      border-radius:12px;
+      padding:1.2rem;
+      transition:transform .25s;
+    }
+    .glass:hover{transform:translateY(-4px);}
+    .counter{font-size:2rem;font-weight:700;color:var(--acc);}
+    .edu-card{margin-top:1.5rem;}
+    .animate{opacity:0;transform:translateY(20px);transition:all .6s ease-out;}
+    .animate.show{opacity:1;transform:translateY(0);}
+  </style>
 </head>
 <body>
 <nav>
@@ -20,9 +55,9 @@
 <main id="morphRoot" class="morph-container"></main>
 
 <script>
-/* -----  tiny morph router  ----- */
+/* ----------  tiny morph router  ---------- */
 const root  = document.getElementById('morphRoot');
-const cache = {};                       // page cache
+const cache = {};
 async function loadPage(name){
   if(cache[name]) return morph(cache[name]);
   const res  = await fetch(`pages/${name}.html`);
@@ -31,16 +66,17 @@ async function loadPage(name){
   morph(html);
 }
 function morph(newHTML){
-  root.style.opacity = 0;               // fade-out
+  root.style.opacity = 0;
   setTimeout(()=>{
     root.innerHTML = newHTML;
-    root.style.opacity = 1;             // fade-in (CSS handles the rest)
+    root.style.opacity = 1;
+    if(root.querySelector('.counter')) animateCounters();
   },250);
 }
-/* -----  routing  ----- */
+/* ----------  routing  ---------- */
 window.addEventListener('hashchange', ()=> loadPage(location.hash.slice(1)||'home'));
-loadPage('home');                       // first paint
-/* -----  dark mode  ----- */
+loadPage('home');
+/* ----------  dark mode  ---------- */
 const btn = document.getElementById('themeToggle');
 btn.onclick = ()=>{
   const html = document.documentElement;
@@ -48,6 +84,72 @@ btn.onclick = ()=>{
   localStorage.setItem('theme', html.dataset.theme);
 };
 if(localStorage.theme) document.documentElement.dataset.theme = localStorage.theme;
+/* ----------  counter animation  ---------- */
+function animateCounters(){
+  const counters = document.querySelectorAll('.counter');
+  counters.forEach(el=>{
+    const target = +el.dataset.target;
+    const inc = target / 60; let curr = 0;
+    const tick = ()=>{
+      curr += inc;
+      if(curr < target) { el.textContent = Math.floor(curr); requestAnimationFrame(tick); }
+      else el.textContent = target;
+    };
+    tick();
+  });
+}
+</script>
+
+<!--  ----------  HOME PAGE INJECTED BELOW  ----------  -->
+<script id="homeContent" type="text/template">
+<section class="hero">
+  <h1>Muhammad Ridwan Bayrajee</h1>
+  <p class="tag-line">
+    Dual-degree student combining engineering depth with data-driven sales strategy. At Audi Middle East I automated 98 % of reporting and launched 20+ dealer campaigns; at Air Mauritius I guaranteed Rolls-Royce fleet compliance. President of IMechE & Head of Service at IEEE—40+ international events led. Fluent in English, French; conversational German, Hindi, Urdu.
+  </p>
+</section>
+
+<section class="grid" style="gap:1.2rem;">
+  <div class="glass animate">
+    <div class="counter" data-target="4">0</div>
+    <div>Internships</div>
+  </div>
+  <div class="glass animate">
+    <div class="counter" data-target="35">0</div>
+    <div>Certifications</div>
+  </div>
+  <div class="glass animate">
+    <div class="counter" data-target="45">0</div>
+    <div>Skills Endorsed</div>
+  </div>
+  <div class="glass animate">
+    <div class="counter" data-target="2">0</div>
+    <div>Native Languages</div>
+  </div>
+</section>
+
+<section class="card edu-card animate">
+  <h2>Education</h2>
+  <p>
+    <strong>Dual Degree: B.Eng (Hons) & M.Eng in Mechatronics Engineering</strong><br>
+    Jan 2022 – Jan 2026<br>
+    Bachelor’s: Asia Pacific University of Technology & Innovation (Malaysia)<br>
+    Master’s: De Montfort University (United Kingdom)
+  </p>
+</section>
+</script>
+
+<script>
+/* inject home page on first load */
+cache.home = document.getElementById('homeContent').innerHTML;
+morph(cache.home);
+/* trigger animate on scroll */
+const io = new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+}, {threshold:.3});
+document.addEventListener('DOMContentLoaded', ()=>{
+  document.querySelectorAll('.animate').forEach(el=>io.observe(el));
+});
 </script>
 </body>
 </html>
