@@ -1,41 +1,107 @@
 <h2>Experience</h2>
 
-<div class="card">
-<h3>Sales Operations Intern – Audi Middle East</h3>
-<p>Dubai, UAE | Jan – Jun 2025 | On-site</p>
-<ul>
-  <li>Contributed to 2030 sales strategy across New, Used & Fleet channels.</li>
-  <li>Automated key reports with Excel VBA & Outlook → <strong>98 % manual reduction</strong>.</li>
-  <li>Designed dealer KPIs & Balanced Scorecards; launched 20+ IRiS campaigns.</li>
-  <li>Portfolio analysis, margin reviews, over-stock risk models.</li>
-  <li>Sole owner of Used-Car dashboards; assisted Qlik-Sense rollout.</li>
-</ul>
+<div class="grid">
+
+  <!-- Audi -->
+  <div class="card exp-card">
+    <h3>Sales Operations Intern – Audi Middle East</h3>
+    <p>Dubai, UAE | Jan – Jun 2025 | On-site</p>
+    <ul class="exp-list">
+      <li>Contributed to Audi’s 2030 sales strategy with analyses & insights.</li>
+      <li>Automated key reports using Excel VBA & Outlook (98% time saved).</li>
+      <div class="more">
+        <li>Designed and implemented dealer KPIs and Balanced Scorecards.</li>
+        <li>Conducted portfolio analyses, dealer margin reviews, overstock risk.</li>
+        <li>Launched and managed 20+ dealer campaigns via IRIS platform.</li>
+        <li>Solely responsible for Used Car dashboards & weekly reporting.</li>
+        <li>Assisted in rollout of Qlik Sense dashboards for stakeholders.</li>
+        <li>Collaborated with senior leadership to align reporting with strategy.</li>
+      </div>
+    </ul>
+    <button class="toggle-btn">Expand ▼</button>
+  </div>
+
+  <!-- Porsche -->
+  <div class="card exp-card">
+    <h3>Engineering Intern – Porsche Centre Mauritius</h3>
+    <p>Mauritius | Nov 2024 – Jan 2025 | 3 mos</p>
+    <ul class="exp-list">
+      <li>Insight into technical & organisational service processes.</li>
+      <li>Performed diagnostic procedures during fault finding.</li>
+      <div class="more">
+        <li>Applied basic service & oil change on Porsche vehicles.</li>
+        <li>Used online service manuals to identify mechanical parts.</li>
+        <li>Exposure to material processing: drilling, grinding, welding, soldering.</li>
+      </div>
+    </ul>
+    <button class="toggle-btn">Expand ▼</button>
+  </div>
+
+  <!-- Air Mauritius -->
+  <div class="card exp-card">
+    <h3>Technical Service Engineer – Air Mauritius</h3>
+    <p>Plaine Magnien | Dec 2023 – Feb 2024 | 3 mos</p>
+    <ul class="exp-list">
+      <li>Checked AD reports with ATA engineers before submission.</li>
+      <li>Maintained Rolls Royce Trent 700 engine records in Maintenix.</li>
+      <div class="more">
+        <li>Prepared Engine & Cabin Maintenance checklists.</li>
+        <li>Maintained PMTS records for A330/A350 landing gears.</li>
+        <li>O₂ Generator & Life Vest mapping, D&B Charts records.</li>
+        <li>Filled NIS reports & weight/balance sheets.</li>
+        <li>Performed statistical analysis of AD, AOT, SBs, MSBs.</li>
+        <li>Exposure to AIRNAV, Airbus World, Maintenix.</li>
+      </div>
+    </ul>
+    <button class="toggle-btn">Expand ▼</button>
+  </div>
+
+  <!-- Rongai -->
+  <div class="card exp-card">
+    <h3>Mechanical Engineering Intern – Rongai Workshop & Transport Ltd</h3>
+    <p>Nakuru, Kenya | Nov 2022 – Feb 2023 | 4 mos</p>
+    <ul class="exp-list">
+      <li>Assisted in vehicle maintenance & repairs, incl. diagnostics.</li>
+      <li>Collected & analyzed data on performance & fuel efficiency.</li>
+      <div class="more">
+        <li>Maintained accurate records & contributed to technical docs.</li>
+      </div>
+    </ul>
+    <button class="toggle-btn">Expand ▼</button>
+  </div>
+
 </div>
 
-<div class="card">
-<h3>Engineering Intern – Porsche Centre Mauritius</h3>
-<p>Mauritius | Nov 2024 – Jan 2025 | 3 mos</p>
-<ul>
-  <li>Diagnostic routines, service manuals, basic maintenance & oil changes on Porsche cars.</li>
-  <li>Hands-on material processing: drilling, grinding, welding, riveting, soldering.</li>
-</ul>
-</div>
+<style>
+.exp-card { position: relative; }
+.exp-list { list-style: disc; margin-left: 1.2rem; overflow: hidden; }
+.exp-list .more {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.exp-card.expanded .more {
+  max-height: 1000px; /* large enough for full content */
+}
+.toggle-btn {
+  margin-top: 0.8rem;
+  border: none;
+  background: var(--acc);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  float: right;
+}
+</style>
 
-<div class="card">
-<h3>Technical Service Engineer – Air Mauritius</h3>
-<p>Plaine Magnien | Dec 2023 – Feb 2024 | 3 mos</p>
-<ul>
-  <li>AD / SB / AOT / MSB compliance checks; Rolls-Royce Trent 700 LLP uploads into Maintenix.</li>
-  <li>Landing-gear PMTS, O₂ generator & life-vest mapping, weight-&-balance reports.</li>
-  <li>Statistical calculations on airworthiness bulletins; exposure to AIRNAV, Airbus World.</li>
-</ul>
-</div>
-
-<div class="card">
-<h3>Mechanical Engineering Intern – Rongai Workshop & Transport Ltd</h3>
-<p>Nakuru, Kenya | Nov 2022 – Feb 2023 | 4 mos</p>
-<ul>
-  <li>Vehicle diagnostics, routine inspections, fuel-efficiency data analysis.</li>
-  <li>Authored technical documentation & maintenance logs.</li>
-</ul>
-</div>
+<script>
+document.querySelectorAll('.exp-card').forEach(card=>{
+  const btn = card.querySelector('.toggle-btn');
+  btn.addEventListener('click', ()=>{
+    card.classList.toggle('expanded');
+    btn.textContent = card.classList.contains('expanded') ? 'Collapse ▲' : 'Expand ▼';
+  });
+});
+</script>
