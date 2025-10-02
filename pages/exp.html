@@ -11,11 +11,11 @@
       <li>Automated key reports using Excel VBA & Outlook (98% time saved).</li>
       <div class="more">
         <li>Designed and implemented dealer KPIs and Balanced Scorecards.</li>
-        <li>Conducted portfolio analyses, dealer margin reviews, overstock risk.</li>
-        <li>Launched and managed 20+ dealer campaigns via IRIS platform.</li>
+        <li>Conducted portfolio analyses, dealer margin reviews, and overstock risk assessments.</li>
+        <li>Launched and managed 20+ dealer campaigns on the IRIS platform.</li>
         <li>Solely responsible for Used Car dashboards & weekly reporting.</li>
-        <li>Assisted in rollout of Qlik Sense dashboards for stakeholders.</li>
-        <li>Collaborated with senior leadership to align reporting with strategy.</li>
+        <li>Assisted in the rollout of Qlik Sense dashboards.</li>
+        <li>Collaborated regularly with senior leadership to align reporting with strategy.</li>
       </div>
     </ul>
     <button class="toggle-btn">Expand ▼</button>
@@ -31,7 +31,7 @@
       <div class="more">
         <li>Applied basic service & oil change on Porsche vehicles.</li>
         <li>Used online service manuals to identify mechanical parts.</li>
-        <li>Exposure to material processing: drilling, grinding, welding, soldering.</li>
+        <li>Exposure to material processing: drilling, grinding, welding, riveting, soldering.</li>
       </div>
     </ul>
     <button class="toggle-btn">Expand ▼</button>
@@ -64,44 +64,10 @@
       <li>Assisted in vehicle maintenance & repairs, incl. diagnostics.</li>
       <li>Collected & analyzed data on performance & fuel efficiency.</li>
       <div class="more">
-        <li>Maintained accurate records & contributed to technical docs.</li>
+        <li>Maintained accurate records & contributed to technical documentation.</li>
       </div>
     </ul>
     <button class="toggle-btn">Expand ▼</button>
   </div>
 
 </div>
-
-<style>
-.exp-card { position: relative; }
-.exp-list { list-style: disc; margin-left: 1.2rem; overflow: hidden; }
-.exp-list .more {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-.exp-card.expanded .more {
-  max-height: 1000px; /* large enough for full content */
-}
-.toggle-btn {
-  margin-top: 0.8rem;
-  border: none;
-  background: var(--acc);
-  color: #fff;
-  padding: 0.4rem 0.8rem;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  float: right;
-}
-</style>
-
-<script>
-document.querySelectorAll('.exp-card').forEach(card=>{
-  const btn = card.querySelector('.toggle-btn');
-  btn.addEventListener('click', ()=>{
-    card.classList.toggle('expanded');
-    btn.textContent = card.classList.contains('expanded') ? 'Collapse ▲' : 'Expand ▼';
-  });
-});
-</script>
