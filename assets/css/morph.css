@@ -143,11 +143,28 @@ footer {
 }
 
 /* ---------- EXPERIENCE PAGE (EXPANDABLE CARDS) ---------- */
-.grid.exp-grid {
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap:1.5rem;
+#exp .grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* force 2 columns on desktop */
+  gap: 1.5rem;
 }
-.exp-card { position: relative; }
+@media (max-width: 768px) {
+  #exp .grid {
+    grid-template-columns: 1fr; /* stack on mobile */
+  }
+}
+.exp-card {
+  position: relative;
+  background: var(--card);
+  padding: 1.2rem 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+  transition: transform .25s, box-shadow .25s;
+}
+.exp-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 16px rgba(0,0,0,.2);
+}
 .exp-list {
   list-style: disc;
   margin-left: 1.2rem;
@@ -159,7 +176,7 @@ footer {
   transition: max-height 0.4s ease;
 }
 .exp-card.expanded .more {
-  max-height: 1000px; /* plenty of room */
+  max-height: 1000px; /* large enough for expansion */
 }
 .toggle-btn {
   margin-top: 0.8rem;
@@ -171,6 +188,7 @@ footer {
   cursor: pointer;
   font-size: 0.9rem;
   float: right;
+  transition: background .2s;
 }
 .toggle-btn:hover {
   opacity:0.85;
