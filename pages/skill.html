@@ -1,158 +1,90 @@
-<section class="card">
-  <h2>Licenses & Certifications (31)</h2>
-  <input id="certSearch" placeholder="🔍  filter certs…" style="width:100%;padding:.5rem;border-radius:4px;border:1px solid var(--acc);background:transparent;color:inherit;margin-bottom:1rem;">
-  <div id="certBadges" class="badge-grid"></div>
-</section>
+<section id="skill">
+  <h2>Skills & Certifications</h2>
 
-<section class="card">
-  <h2>Skills Matrix (45)</h2>
-  <div class="chip-group">
-    <label><input type="checkbox" value="ai"> AI & Prompting</label>
-    <label><input type="checkbox" value="sales"> Sales & Ops</label>
-    <label><input type="checkbox" value="data"> Data & BI</label>
-    <label><input type="checkbox" value="soft"> Interpersonal</label>
-    <label><input type="checkbox" value="tech"> Programming</label>
+  <div class="split-grid">
+
+    <!-- LEFT SIDE – CERTIFICATIONS -->
+    <div class="card">
+      <h3>Licenses & Certifications</h3>
+
+      <!-- Sort Dropdown -->
+      <label for="certSort" style="font-size:0.9rem; margin-right:0.5rem;">Sort by:</label>
+      <select id="certSort" style="padding:0.3rem; border-radius:4px; margin-bottom:1rem;">
+        <option value="alpha">Alphabetical</option>
+        <option value="institution">Institution</option>
+      </select>
+
+      <!-- Certificates List -->
+      <ul id="certList" class="cert-list">
+        <li data-inst="PMI">Project Management Professional – PMI</li>
+        <li data-inst="Microsoft">Power BI Data Analyst – Microsoft</li>
+        <li data-inst="Coursera">Generative AI Specialization – Coursera</li>
+        <li data-inst="Coursera">Excel VBA for Business – Coursera</li>
+        <li data-inst="Udemy">Python for Data Science – Udemy</li>
+        <li data-inst="Tableau">Data Visualization Expert – Tableau</li>
+        <li data-inst="Qlik">Qlik Sense Business Analyst – Qlik</li>
+        <li data-inst="AWS">AWS Cloud Practitioner – Amazon Web Services</li>
+      </ul>
+    </div>
+
+    <!-- RIGHT SIDE – SKILLS -->
+    <div class="card">
+      <h3>Skills Matrix</h3>
+      <div class="skills-list">
+        <span>AI & Prompting</span>
+        <span>Analytics</span>
+        <span>Business Development</span>
+        <span>C Programming</span>
+        <span>Data Visualization</span>
+        <span>Excel VBA</span>
+        <span>Forecasting</span>
+        <span>Interpersonal Skills</span>
+        <span>MATLAB</span>
+        <span>Outlook Macros</span>
+        <span>Portfolio Analysis</span>
+        <span>Power BI</span>
+        <span>Process Improvement</span>
+        <span>Programming (Python)</span>
+        <span>Project Management</span>
+        <span>Qlik Sense</span>
+        <span>Sales Operations</span>
+        <span>Tableau</span>
+      </div>
+
+      <h3 style="margin-top:1.5rem;">Languages</h3>
+      <div class="skills-list">
+        <span>English – Native</span>
+        <span>French – Native</span>
+        <span>German – Elementary</span>
+        <span>Hindi – Professional</span>
+        <span>Urdu – Professional</span>
+      </div>
+    </div>
+
   </div>
-  <div id="skillBadges" class="badge-grid"></div>
-</section>
-
-<section class="card">
-  <h3>Languages</h3>
-  <p>
-    <span class="lang-chip">🇬🇧 English – Native</span>
-    <span class="lang-chip">🇫🇷 French – Native</span>
-    <span class="lang-chip">🇩🇪 German – Elementary</span>
-    <span class="lang-chip">🇮🇳 Hindi – Professional</span>
-    <span class="lang-chip">🇵🇰 Urdu – Professional</span>
-  </p>
 </section>
 
 <script>
-/* ----------  data  ---------- */
-const certs = [
-"IIBA | AI Chat Prompts for Business Analysis",
-"LinkedIn | Building a Personalized Chatbot with OpenAI & LangChain",
-"PMI | Business Development Foundations",
-"LinkedIn | Complete Guide to Power BI for Data Analysts (Microsoft Press)",
-"NASBA | Creating Interactive Tableau Dashboards",
-"LinkedIn | Excel Supply-Chain Analysis: Transportation Problems",
-"LinkedIn | Excel with Copilot: AI-Driven Data Analysis",
-"IIBA | Excel: Economic Analysis & Data Analytics",
-"IIBA | Generative AI for Business Analysts",
-"Microsoft | Generative AI for Sales with Microsoft 365 Copilot",
-"IIBA | Learning Google Gemini for Business Analysis",
-"LinkedIn | Microsoft 365 Copilot for Work (2024)",
-"NASBA | Power BI Essential Training (2024)",
-"IIBA | Regression Analysis Fundamentals",
-"LinkedIn | Sales Strategy: Using AI & Automation to Sell More",
-"NASBA | Tableau Essential Learning",
-"NASBA | Interpersonal Communication",
-"PMI | Critical Thinking & Problem Solving",
-"IBM | Generative AI: Prompt Engineering Basics",
-"Google | Introduction to Generative AI",
-"SkillUp | Deep Learning",
-"Google | UX Design Foundations",
-"Google | IT Automation with Python",
-"Great Learning | ML in AWS",
-"Dubai Future | Foundations of Emerging Tech",
-"SkillUp | Intro to AI",
-"SkillUp | Machine Learning",
-"Google | Project Management Foundations",
-"Great Learning | Effective Communication",
-"Google | Digital Marketing Fundamentals",
-"Alison | Diploma in Project Management"
-];
+/* ---------- Certificate Sorting ---------- */
+const certSort = document.getElementById('certSort');
+const certList = document.getElementById('certList');
 
-const skills = [
-{tag:"ai", name:"AI for Sales"},
-{tag:"ai", name:"AI for Business Analysis"},
-{tag:"ai", name:"AI Productivity"},
-{tag:"ai", name:"Artificial Intelligence for Business"},
-{tag:"ai", name:"Prompt Engineering"},
-{tag:"ai", name:"Multimodal Prompting"},
-{tag:"ai", name:"OpenAI Products"},
-{tag:"ai", name:"LangChain"},
-{tag:"ai", name:"Microsoft Copilot"},
-{tag:"ai", name:"Generative AI"},
-{tag:"sales", name:"Sales Strategy"},
-{tag:"sales", name:"Sales Automation"},
-{tag:"sales", name:"Sales Operations"},
-{tag:"sales", name:"Business Development"},
-{tag:"sales", name:"Chatbot Development"},
-{tag:"data", name:"Data Analysis"},
-{tag:"data", name:"Data Analytics"},
-{tag:"data", name:"Data Visualization"},
-{tag:"data", name:"Regression Analysis"},
-{tag:"data", name:"Economic Analysis"},
-{tag:"data", name:"Supply-Chain Analytics"},
-{tag:"data", name:"Transportation Management"},
-{tag:"data", name:"Qlik Sense"},
-{tag:"data", name:"Power BI"},
-{tag:"data", name:"Tableau"},
-{tag:"data", name:"Excel"},
-{tag:"tech", name:"Python"},
-{tag:"tech", name:"Algorithms"},
-{tag:"tech", name:"Debugging"},
-{tag:"tech", name:"IDEs"},
-{tag:"tech", name:"Computer Programming"},
-{tag:"soft", name:"Critical Thinking"},
-{tag:"soft", name:"Problem Solving"},
-{tag:"soft", name:"Interpersonal Communication"},
-{tag:"soft", name:"Effective Communication"},
-{tag:"soft", name:"Teamwork"},
-{tag:"soft", name:"Leadership"},
-{tag:"soft", name:"Rapid Learning"},
-{tag:"other", name:"Project Management"},
-{tag:"other", name:"User Experience (UX)"},
-{tag:"other", name:"IRIS"}
-];
+certSort.addEventListener('change', () => {
+  const items = Array.from(certList.querySelectorAll('li'));
+  let sorted;
 
-/* ----------  render  ---------- */
-function renderCerts(list){
-  certBadges.innerHTML = list.map(c=>{
-    const [org, ...rest] = c.split(" | ");
-    return `<span class="cert-chip ${org.replace(/\s/g,"").toLowerCase()}">${org} · ${rest.join(" | ")}</span>`;
-  }).join("");
-}
-function renderSkills(list){
-  skillBadges.innerHTML = list.map(s=>`<span class="skill-chip ${s.tag}">${s.name}</span>`).join("");
-}
-renderCerts(certs);
-renderSkills(skills);
+  if (certSort.value === 'alpha') {
+    sorted = items.sort((a, b) => a.textContent.localeCompare(b.textContent));
+  } else {
+    sorted = items.sort((a, b) => {
+      const instA = a.dataset.inst.toLowerCase();
+      const instB = b.dataset.inst.toLowerCase();
+      if (instA === instB) return a.textContent.localeCompare(b.textContent);
+      return instA.localeCompare(instB);
+    });
+  }
 
-/* ----------  filters  ---------- */
-certSearch.addEventListener("input", e=>{
-  const q = e.target.value.toLowerCase();
-  renderCerts(q ? certs.filter(c=>c.toLowerCase().includes(q)) : certs);
-});
-document.querySelectorAll('.chip-group input').forEach(box=>{
-  box.addEventListener("change", ()=>{
-    const selected = [...document.querySelectorAll('.chip-group input:checked')].map(i=>i.value);
-    renderSkills(selected.length ? skills.filter(s=>selected.includes(s.tag)) : skills);
-  });
+  certList.innerHTML = "";
+  sorted.forEach(li => certList.appendChild(li));
 });
 </script>
-
-<style>
-.badge-grid{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.5rem;}
-.cert-chip, .skill-chip{
-  display:inline-block;padding:.4rem .8rem;border-radius:20px;font-size:.85rem;
-  background:var(--card);border:1px solid var(--acc);color:var(--txt);
-  transition:transform .2s;
-}
-.cert-chip:hover, .skill-chip:hover{transform:scale(1.05);}
-.chip-group{display:flex;flex-wrap:wrap;gap:.8rem;margin-bottom:1rem;}
-.chip-group label{cursor:pointer;display:flex;align-items:center;gap:.3rem;}
-.lang-chip{display:inline-block;margin:.2rem;padding:.4rem .7rem;background:var(--card);border-radius:6px;font-size:.9rem;}
-/* org colour accents */
-.cert-chip.microsoft{border-color:#00bcf2;}
-.cert-chip.linkedin{border-color:#0077b5;}
-.cert-chip.iiba{border-color:#00558c;}
-.cert-chip.nasba{border-color:#2f7d32;}
-.cert-chip.google{border-color:#4285f4;}
-.cert-chip.ibm{border-color:#054ada;}
-.cert-chip.pmi{border-color:#8b5cf6;}
-.cert-chip.skillup{border-color:#f59e0b;}
-.cert-chip.alison{border-color:#17a2b8;}
-.cert-chip.dubai{border-color:#ff6f00;}
-</style>
