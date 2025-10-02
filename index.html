@@ -1,0 +1,146 @@
+---
+#  Ridwan Bayrajee – Online Portfolio
+#  Theme: markdown-cv (MIT) + dark/light switch
+#  Host: GitHub Pages → Settings → Pages → Source: main / (root)
+---
+
+<style>
+:root{
+  --bg:#ffffff;--txt:#111;--acc:#0d47a1;--card:#f5f5f5;
+}
+@media (prefers-color-screte: dark){
+  :root{
+    --bg:#121212;--txt:#eee;--acc:#64b5f6;--card:#1e1e1e;
+  }
+}
+body{
+  background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  margin:0;padding:2rem 1rem;line-height:1.6;
+}
+a{color:var(--acc);}
+.container{max-width:900px;margin:auto;}
+.toggle{position:fixed;top:1rem;right:1rem;cursor:pointer;background:var(--acc);color:#fff;border:0;padding:.4rem .6rem;border-radius:4px;}
+section{margin-bottom:2.5rem;}
+h1,h2,h3{line-height:1.2;}
+h1{font-size:2.2rem;margin-bottom:.2rem;}
+.role{font-size:1.1rem;color:var(--acc);margin-bottom:1.5rem;}
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--card);padding:1.2rem;border-radius:8px;}
+ul{padding-left:1.2rem;}
+</style>
+
+<button class="toggle" onclick="document.body.classList.toggle('dark')">🌗</button>
+
+<div class="container">
+
+<header>
+  <h1>Muhammad Ridwan Bayrajee</h1>
+  <p class="role">Dual-Degree M.Eng Mechatronics | Sales-Ops & Business-Analytics Focus</p>
+  <p>
+    <a href="tel:+23059155805">+230 5915 5805</a> |
+    <a href="mailto:rid1612@icloud.com">rid1612@icloud.com</a> |
+    <a href="https://linkedin.com/in/bayrajee" target="_blank">LinkedIn</a>
+  </p>
+</header>
+
+<section id="about">
+  <h2>About</h2>
+  <p>
+  Final-year dual-degree student (B.Eng & M.Eng Mechatronics, Jan 2026) blending engineering rigour with data-driven sales operations.  
+  At <strong>Audi Middle East</strong> I automated 98 % of legacy reporting and built KPI scorecards for 20+ dealerships.  
+  Previously at <strong>Air Mauritius</strong> I ensured airworthiness compliance for Rolls-Royce Trent 700 fleets.  
+  Certified in Project Management & Generative-AI prompt engineering; fluent in Power BI, Tableau, Python, Excel VBA, Qlik Sense.
+  </p>
+</section>
+
+<section id="skills">
+  <h2>Skills & Tool-stack</h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Analytics & Ops</h3>
+      <ul>
+        <li>Sales Operations</li>
+        <li>Forecasting & KPI Design</li>
+        <li>Process Improvement</li>
+        <li>Portfolio & Margin Analysis</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Technical</h3>
+      <ul>
+        <li>Power BI • Tableau • Qlik Sense</li>
+        <li>Python • C • MATLAB</li>
+        <li>Excel VBA & Outlook Macros</li>
+        <li>Generative AI & Prompting</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Certifications</h3>
+      <ul>
+        <li>Project Management (PMI)</li>
+        <li>Generative AI & Prompt Engineering</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <h2>Professional Experience</h2>
+
+  <h3>Sales Operations Intern — Audi Middle East (UAE)</h3>
+  <p><em>Jan 2025 – Jun 2025</em></p>
+  <ul>
+    <li>Automated reporting pipelines with Excel VBA & Outlook macros → <strong>98 % manual effort reduction</strong>.</li>
+    <li>Delivered 2030-sales-strategy analyses across new, used & fleet channels.</li>
+    <li>Built dealer KPIs & Balanced Scorecards; launched 20+ campaigns via IRIS platform.</li>
+    <li>Performed portfolio analyses (vehicle-age vs. oil-price), margin reviews & over-stock risk assessments.</li>
+    <li>Maintained used-car dashboards; supported Qlik-Sense rollout for regional stakeholders.</li>
+  </ul>
+
+  <h3>Technical Service Engineering Intern — Air Mauritius Ltd</h3>
+  <p><em>Dec 2023 – Feb 2024</em></p>
+  <ul>
+    <li>Verified airworthiness docs (AD, SB, AOT, MSB) with ATA engineers for A330/A350 fleets.</li>
+    <li>Administered Rolls-Royce Trent 700 engine records in Maintenix.</li>
+    <li>Produced landing-gear, safety-equipment & weight-and-balance reports under strict regulatory standards.</li>
+  </ul>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+  <p>
+  <strong>Dual Degree: B.Eng (Hons) & M.Eng in Mechatronics Engineering</strong><br>
+  Jan 2022 – Jan 2026<br>
+  Bachelor’s: Asia Pacific University of Technology & Innovation (Malaysia)<br>
+  Master’s: De Montfort University (United Kingdom)
+  </p>
+</section>
+
+<section id="projects">
+  <h2>Featured Projects <small>(placeholder – drop LinkedIn screenshots to expand)</small></h2>
+  <div class="grid">
+    <div class="card">
+      <h3>Audi Regional KPI Dashboard</h3>
+      <p>End-to-end Power BI dashboard ingesting 1.2 M rows of sales & inventory data. Enabled dealership managers to track margin, turn-rate and over-stock risk in real time.</p>
+    </div>
+    <div class="card">
+      <h3>Excel VBA Automation Suite</h3>
+      <p>Macro package that consolidates 20 dealer files, refreshes pivot tables, emails PDF reports and logs status into SharePoint list – runtime &lt; 45 s vs. 2 hrs manual.</p>
+    </div>
+  </div>
+</section>
+
+<section id="leadership">
+  <h2>Leadership & Extracurriculars <small>(expand after LinkedIn drop)</small></h2>
+  <p>President, <strong>International Student Association</strong> – led 150+ members across 28 nationalities, organised industrial hackathons & fundraising events. <em>(Details coming soon.)</em></p>
+</section>
+
+<footer>
+  <p>Last updated: <span id="date"></span> | Hosted on GitHub Pages</p>
+</footer>
+
+</div>
+
+<script>
+document.getElementById('date').textContent = new Date().toLocaleDateString();
+</script>
