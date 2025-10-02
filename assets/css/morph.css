@@ -1,39 +1,177 @@
-/* ----------  CSS variables  ---------- */
+/* ---------- THEME VARIABLES ---------- */
 :root[data-theme="light"]{
-  --bg:#ffffff;--txt:#111;--acc:#0d47a1;--card:#f5f5f5;--nav:#e3f2fd;
+  --bg:#ffffff;
+  --txt:#111;
+  --acc:#0d47a1;
+  --card:#f5f5f5;
+  --nav:#e3f2fd;
 }
 :root[data-theme="dark"]{
-  --bg:#121212;--txt:#eee;--acc:#64b5f6;--card:#1e1e1e;--nav:#0d1b2a;
+  --bg:#121212;
+  --txt:#eee;
+  --acc:#64b5f6;
+  --card:#1e1e1e;
+  --nav:#0d1b2a;
 }
-/* ----------  global  ---------- */
-*{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;}
-body{background:var(--bg);color:var(--txt);line-height:1.6;}
-a{color:var(--acc);text-decoration:none;}
-/* ----------  nav  ---------- */
-nav{
-  position:sticky;top:0;z-index:10;
-  display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;
-  padding:.75rem 1rem;background:var(--nav);backdrop-filter:blur(8px);
+
+/* ---------- GLOBAL ---------- */
+* {
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 }
-nav a{padding:.4rem .6rem;border-radius:4px;transition:background .2s;}
-nav a:hover{background:var(--acc);color:#fff;}
-#themeToggle{margin-left:auto;border:0;background:var(--acc);color:#fff;padding:.4rem .6rem;border-radius:50%;cursor:pointer;}
-/* ----------  morph container  ---------- */
-.morph-container{
-  padding:2rem 1rem;max-width:1000px;margin:auto;
-  opacity:1;transition:opacity .25s ease-in-out;
+body {
+  background:var(--bg);
+  color:var(--txt);
+  line-height:1.6;
 }
-/* ----------  glass cards  ---------- */
-.card{
-  background:var(--card);padding:1.5rem;border-radius:12px;
-  backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.08);
+a {
+  color:var(--acc);
+  text-decoration:none;
+}
+
+/* ---------- NAV ---------- */
+nav {
+  position:sticky;
+  top:0;
+  z-index:10;
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+  align-items:center;
+  padding:.75rem 1rem;
+  background:var(--nav);
+  backdrop-filter:blur(8px);
+}
+nav a {
+  padding:.4rem .6rem;
+  border-radius:4px;
+  transition:background .2s;
+}
+nav a:hover {
+  background:var(--acc);
+  color:#fff;
+}
+#themeToggle {
+  margin-left:auto;
+  border:0;
+  background:var(--acc);
+  color:#fff;
+  padding:.4rem .6rem;
+  border-radius:50%;
+  cursor:pointer;
+}
+
+/* ---------- MAIN CONTAINER ---------- */
+.morph-container {
+  padding:2rem 1rem;
+  max-width:1000px;
+  margin:auto;
+  opacity:1;
+  transition:opacity .25s ease-in-out;
+}
+
+/* ---------- CARDS ---------- */
+.card {
+  background:var(--card);
+  padding:1.5rem;
+  border-radius:12px;
+  backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.08);
   margin-bottom:1.5rem;
 }
-.grid{display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));}
-/* ----------  typography  ---------- */
-h1{font-size:2.4rem;margin-bottom:.3rem;}
-h2{font-size:1.8rem;margin:1.5rem 0 .5rem;}
-h3{font-size:1.3rem;margin-bottom:.4rem;}
-ul{margin-left:1.2rem;}
-/* ----------  footer  ---------- */
-footer{text-align:center;padding:2rem 0;font-size:.85rem;opacity:.7;}
+.grid {
+  display:grid;
+  gap:1.2rem;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+}
+
+/* ---------- TYPOGRAPHY ---------- */
+h1 { font-size:2.4rem; margin-bottom:.3rem; }
+h2 { font-size:1.8rem; margin:1.5rem 0 .5rem; }
+h3 { font-size:1.3rem; margin-bottom:.4rem; }
+ul { margin-left:1.2rem; }
+
+/* ---------- FOOTER ---------- */
+footer {
+  text-align:center;
+  padding:2rem 0;
+  font-size:.85rem;
+  opacity:.7;
+}
+
+/* ---------- HERO (HOME PAGE) ---------- */
+.hero {
+  padding:4rem 1rem 3rem;
+  border-radius:16px;
+  margin-bottom:2rem;
+  text-align:center;
+}
+.hero h1 { font-size:2.6rem; margin-bottom:.5rem; }
+.tag-line {
+  max-width:700px;
+  margin:auto;
+  text-align:justify;
+  text-justify:inter-word;
+  font-size:1.05rem;
+  line-height:1.7;
+}
+.glass {
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:12px;
+  padding:1.2rem;
+  transition:transform .25s;
+}
+.glass:hover { transform:translateY(-4px); }
+.counter {
+  font-size:2rem;
+  font-weight:700;
+  color:var(--acc);
+}
+.edu-card { margin-top:1.5rem; }
+.animate {
+  opacity:0;
+  transform:translateY(20px);
+  transition:all .6s ease-out;
+}
+.animate.show {
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ---------- EXPERIENCE PAGE (EXPANDABLE CARDS) ---------- */
+.grid.exp-grid {
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap:1.5rem;
+}
+.exp-card { position: relative; }
+.exp-list {
+  list-style: disc;
+  margin-left: 1.2rem;
+  overflow: hidden;
+}
+.exp-list .more {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.exp-card.expanded .more {
+  max-height: 1000px; /* plenty of room */
+}
+.toggle-btn {
+  margin-top: 0.8rem;
+  border: none;
+  background: var(--acc);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  float: right;
+}
+.toggle-btn:hover {
+  opacity:0.85;
+}
