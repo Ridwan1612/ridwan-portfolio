@@ -85,23 +85,26 @@ const certs = [
   "Google | Foundations of Project Management",
   "Great Learning | Effective Communication",
   "Google | Digital Marketing Fundamentals",
-  "Alison | Diploma in Project Management"
+  "Alison | Diploma in Project Management",
+  "Audi | Sales Operations Internship",
 ];
 
 const skills = [
   "AI for Business Analysis","AI for Sales","AI Productivity","Artificial Intelligence for Business",
   "Prompt Engineering","Multimodal Prompting","OpenAI Products","LangChain","Microsoft Copilot","Generative AI",
-  "Sales Strategy","Sales Automation","Sales Operations","Business Development","Chatbot Development",
+  "Sales Strategy","Sales Automation","Business Development","Chatbot Development","Project Management",
   "Data Analysis","Data Analytics","Data Visualization","Regression Analysis","Economic Analysis",
-  "Supply-Chain Analytics","Transportation Management","Qlik Sense","Power BI","Tableau","Excel",
-  "Python","Algorithms","Debugging","IDEs","Computer Programming","Microsoft 365",
+  "Supply-Chain Analytics","Transportation Management","Power BI","Tableau","Excel",
+  "Python","Algorithms","Debugging","IDEs","Computer Programming","Microsoft 365","User Experience (UX)",
   "Critical Thinking","Problem Solving","Interpersonal Communication","Effective Communication",
-  "Teamwork","Leadership","Rapid Learning",
-  "Project Management","User Experience (UX)","IRIS"
+  "Rapid Learning","Teamwork","Leadership","Sales Operations","IRIS","Qlik Sense",
 ];
 
 /* ---------- CERT → SKILL MAP ---------- */
 const certSkillMap = {
+  "Sales Operations Internship": [
+    "Sales Operations", "IRIS", "Qlik Sense", "Excel", "Python"
+  ],
   "AI Chat Prompts for Business Analysis": [
     "AI for Business Analysis", "Prompt Engineering", "Business Development"
   ],
@@ -127,10 +130,10 @@ const certSkillMap = {
     "Economic Analysis", "Data Analytics", "Excel"
   ],
   "Generative AI for Business Analysts": [
-    "Business Development", "AI for Business Analysis"
+    "Business Development", "AI for Business Analysis", "Generative AI"
   ],
   "Generative AI for Sales with Microsoft 365 Copilot": [
-    "Microsoft 365", "Microsoft Copilot", "Artificial Intelligence for Business"
+    "Microsoft 365", "Microsoft Copilot", "Artificial Intelligence for Business", "Generative AI"
   ],
   "Learning Google Gemini for Business Analysis": [
     "AI for Business Analysis", "AI Productivity", "Business Development", "Artificial Intelligence for Business"
@@ -157,7 +160,7 @@ const certSkillMap = {
     "Critical Thinking", "Problem Solving"
   ],
   "Generative AI: Prompt Engineering Basics": [
-    "Prompt Engineering", "Multimodal Prompting"
+    "Prompt Engineering", "Multimodal Prompting", "Generative AI"
   ],
   "UX Design Foundations": [
     "User Experience (UX)"
