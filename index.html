@@ -47,6 +47,7 @@
   <a href="#proj" data-page="proj">Projects</a>
   <a href="#lead" data-page="lead">Leadership</a>
   <a href="#skill" data-page="skill">Skills&nbsp;&amp;&nbsp;Certs</a>
+  <a href="#contact" data-page="contact">Contact</a>
   <button id="themeToggle">🌗</button>
 </nav>
 
@@ -73,7 +74,8 @@ function morph(newHTML){
     root.style.opacity = 1;
     if(root.querySelector('.counter')) animateCounters();
     attachAnimations();
-    attachExpToggles(); // new hook for Experience page
+    attachExpToggles(); 
+    if(location.hash.includes("skill")) attachSkillHighlights(); // hook for skills page
   },250);
 }
 
@@ -124,6 +126,47 @@ function attachExpToggles(){
         btn.textContent = card.classList.contains('expanded') ? 'Collapse ▲' : 'Expand ▼';
       });
     }
+  });
+}
+
+/* ---------- skills highlight ---------- */
+function attachSkillHighlights(){
+  const certSkillMap = {
+    "AI Chat Prompts for Business Analysis": [
+      "AI for Business Analysis", "Prompt Engineering", "Business Development"
+    ],
+    "Building a Personalized Chatbot with OpenAI & LangChain": [
+      "LangChain", "Chatbot Development", "OpenAI Products"
+    ]
+  };
+
+  root.querySelectorAll(".cert-chip").forEach(cert=>{
+    cert.addEventListener("mouseenter", ()=>{
+      const certName = cert.dataset.cert;
+      cert.classList.add("highlight");
+      if(certSkillMap[certName]){
+        certSkillMap[certName].forEach(skillName=>{
+          root.querySelectorAll(".skill-chip").forEach(s=>{
+            if(s.textContent.trim() === skillName){
+              s.classList.add("skill-highlight");
+            }
+          });
+        });
+      }
+    });
+    cert.addEventListener("mouseleave", ()=>{
+      const certName = cert.dataset.cert;
+      cert.classList.remove("highlight");
+      if(certSkillMap[certName]){
+        certSkillMap[certName].forEach(skillName=>{
+          root.querySelectorAll(".skill-chip").forEach(s=>{
+            if(s.textContent.trim() === skillName){
+              s.classList.remove("skill-highlight");
+            }
+          });
+        });
+      }
+    });
   });
 }
 </script>
