@@ -76,21 +76,10 @@ const skills = [
   "Project Management","User Experience (UX)","IRIS"
 ];
 
-/* ---------- CERT → SKILL MAP (examples only for now) ---------- */
-const certSkillMap = {
-  "AI Chat Prompts for Business Analysis": [
-    "AI for Business Analysis", "Prompt Engineering", "Business Development"
-  ],
-  "Building a Personalized Chatbot with OpenAI & LangChain": [
-    "LangChain", "Chatbot Development", "OpenAI Products"
-  ]
-};
-
 /* ---------- RENDER ---------- */
 function renderCerts(list){
-  // sort alphabetically by certificate NAME (after " | ")
+  // sort alphabetically by certificate name (after the " | ")
   list.sort((a,b)=> a.split(" | ")[1].localeCompare(b.split(" | ")[1]));
-
   certBadges.innerHTML = list.map(c=>{
     const [org, name] = c.split(" | ");
     return `<span class="cert-chip" data-cert="${name}">${name}</span>`;
@@ -103,50 +92,14 @@ function renderSkills(list){
 
 renderCerts(certs);
 renderSkills(skills);
-
-/* ---------- INTERACTION: hover mapping ---------- */
-document.addEventListener("mouseover", e=>{
-  if(e.target.classList.contains("cert-chip")){
-    const certName = e.target.dataset.cert;
-    e.target.classList.add("highlight"); // cert → green
-
-    // light up mapped skills in white
-    if(certSkillMap[certName]){
-      certSkillMap[certName].forEach(skillName=>{
-        document.querySelectorAll(".skill-chip").forEach(s=>{
-          if(s.textContent.trim() === skillName){
-            s.classList.add("skill-highlight");
-          }
-        });
-      });
-    }
-  }
-});
-
-document.addEventListener("mouseout", e=>{
-  if(e.target.classList.contains("cert-chip")){
-    const certName = e.target.dataset.cert;
-    e.target.classList.remove("highlight");
-
-    if(certSkillMap[certName]){
-      certSkillMap[certName].forEach(skillName=>{
-        document.querySelectorAll(".skill-chip").forEach(s=>{
-          if(s.textContent.trim() === skillName){
-            s.classList.remove("skill-highlight");
-          }
-        });
-      });
-    }
-  }
-});
 </script>
 
 <style>
-/* ---------- CERTIFICATES ---------- */
+/* Certificates as badges */
 .cert-badges {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.8rem; /* more spacing between certs */
+  gap: 0.8rem; /* extra space between certs */
 }
 .cert-chip {
   display: inline-block;
@@ -164,7 +117,7 @@ document.addEventListener("mouseout", e=>{
   color: #fff;
 }
 
-/* ---------- SKILLS ---------- */
+/* Skills as badges */
 .skill-badges {
   display: flex;
   flex-wrap: wrap;
@@ -181,15 +134,12 @@ document.addEventListener("mouseout", e=>{
   white-space: nowrap;
   transition: background 0.2s;
 }
-.skill-chip:hover {
+.skill-chip.skill-highlight {
   background: var(--acc);
   color: #fff;
 }
-/* highlighted when linked from cert */
-.skill-chip.skill-highlight {
-  background: #fff;
-  color: #000;
-  font-weight: 600;
-  border: 1px solid var(--acc);
+.skill-chip:hover {
+  background: var(--acc);
+  color: #fff;
 }
 </style>
