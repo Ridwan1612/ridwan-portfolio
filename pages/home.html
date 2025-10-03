@@ -10,18 +10,18 @@
 </section>
 
 <section class="grid" style="gap:1.2rem;">
-  <div class="glass animate">
+  <a href="#exp" class="glass animate card-link">
     <div class="counter" data-target="4">0</div>
     <div>Internships</div>
-  </div>
-  <div class="glass animate">
+  </a>
+  <a href="#skill" class="glass animate card-link">
     <div class="counter" data-target="35">0</div>
     <div>Professional Certifications</div>
-  </div>
-  <div class="glass animate">
+  </a>
+  <a href="#skill" class="glass animate card-link">
     <div class="counter" data-target="45">0</div>
     <div>Skills Endorsed</div>
-  </div>
+  </a>
 </section>
 
 <section class="card edu-card animate">
@@ -35,9 +35,31 @@
 </section>
 
 <section class="card">
-<h2>Let’s Connect</h2>
-<p>Email: <a href="mailto:rid1612@icloud.com">rid1612@icloud.com</a><br>
-Phone: <a href="tel:+23059155805">+230 5915 5805</a><br>
-LinkedIn: <a href="www.linkedin.com/in/muhammad-ridwan-bayrajee-329937232" target="_blank">linkedin.com/in/muhammad-ridwan-bayrajee-329937232</a></p>
-<br>
+  <h2>Let’s Connect</h2>
+  <p>
+    Email: <a href="mailto:rid1612@icloud.com">rid1612@icloud.com</a><br>
+    Phone: <a href="tel:+23059155805">+230 5915 5805</a><br>
+    LinkedIn: 
+    <a href="https://www.linkedin.com/in/muhammad-ridwan-bayrajee-329937232" target="_blank">
+      linkedin.com/in/muhammad-ridwan-bayrajee-329937232
+    </a>
+  </p>
+  <br>
 </section>
+
+<style>
+/* Make the whole card clickable without underlines */
+.card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* Hover effect: lift + glow */
+.card-link:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25),
+              0 0 12px var(--acc);
+}
+</style>
