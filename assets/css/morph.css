@@ -193,3 +193,33 @@ footer {
 .toggle-btn:hover {
   opacity:0.85;
 }
+
+/* ---------- SKILLS & CERTIFICATIONS PAGE ---------- */
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 2 sides: certs | skills */
+  gap: 1.5rem;
+}
+
+/* Certificates in 2 columns */
+.cert-list {
+  columns: 2;
+  column-gap: 2rem;
+  list-style: disc;
+  margin-left: 1.2rem;
+  line-height: 1.5;
+}
+
+/* Skills in 3 columns */
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .5rem 1rem;
+}
+.skills-list span {
+  background: var(--card);
+  padding: .3rem .6rem;
+  border-radius: 6px;
+  font-size: .9rem;
+  display: inline-block;
+}
