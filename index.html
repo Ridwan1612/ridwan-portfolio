@@ -176,6 +176,15 @@ const certSkillMap = {
   ]
 };
 
+/* ---------- Generate Reverse Map ---------- */
+const skillCertMap = {};
+for (const [cert, skills] of Object.entries(certSkillMap)) {
+  skills.forEach(skill => {
+    if (!skillCertMap[skill]) skillCertMap[skill] = [];
+    skillCertMap[skill].push(cert);
+  });
+}
+
 /* ---------- router + morph ---------- */
 const root  = document.getElementById('morphRoot');
 const cache = {};
@@ -274,20 +283,41 @@ function renderSkills(list){
 
 function attachSkillHighlights(){
   const certEls = document.querySelectorAll('.cert-chip');
+  const skillEls = document.querySelectorAll('.skill-chip');
+
+  // Cert → Skill highlight
   certEls.forEach(cert=>{
     cert.addEventListener('mouseenter', ()=>{
       cert.classList.add('highlight');
       const related = certSkillMap[cert.textContent];
       if(related){
         related.forEach(skill=>{
-          const el = [...document.querySelectorAll('.skill-chip')].find(s=>s.textContent===skill);
+          const el = [...skillEls].find(s=>s.textContent===skill);
           if(el) el.classList.add('highlight-skill');
         });
       }
     });
     cert.addEventListener('mouseleave', ()=>{
       cert.classList.remove('highlight');
-      document.querySelectorAll('.skill-chip').forEach(s=>s.classList.remove('highlight-skill'));
+      skillEls.forEach(s=>s.classList.remove('highlight-skill'));
+    });
+  });
+
+  // Skill → Cert highlight
+  skillEls.forEach(skill=>{
+    skill.addEventListener('mouseenter', ()=>{
+      skill.classList.add('highlight-skill');
+      const related = skillCertMap[skill.textContent];
+      if(related){
+        related.forEach(cert=>{
+          const el = [...certEls].find(c=>c.textContent===cert);
+          if(el) el.classList.add('highlight');
+        });
+      }
+    });
+    skill.addEventListener('mouseleave', ()=>{
+      skill.classList.remove('highlight-skill');
+      certEls.forEach(c=>c.classList.remove('highlight'));
     });
   });
 }
