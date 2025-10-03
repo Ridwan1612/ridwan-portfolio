@@ -197,8 +197,8 @@ footer {
 /* ---------- SKILLS & CERTIFICATIONS PAGE ---------- */
 .split-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* 2 sides: certs | skills */
-  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr; /* Left: certs | Right: skills */
+  gap: 2rem;
 }
 
 /* Certificates in 2 columns */
@@ -207,20 +207,30 @@ footer {
   column-gap: 2rem;
   list-style: disc;
   margin-left: 1.2rem;
+}
+.cert-list li {
   margin-bottom: 0.6rem;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
-/* Skills in 3 columns */
-.skills-list {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: .5rem 1rem;
+/* Skills as modern badges */
+.skill-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
 }
-.skills-list span {
-  background: var(--card);
-  padding: .3rem .6rem;
-  border-radius: 6px;
-  font-size: .9rem;
+.skill-badges span {
   display: inline-block;
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
+  background: var(--nav);
+  color: var(--txt);
+  font-size: 0.9rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+.skill-badges span:hover {
+  background: var(--acc);
+  color: #fff;
 }
