@@ -5,50 +5,89 @@
 
     <!-- LEFT SIDE – CERTIFICATIONS -->
     <div class="card">
-      <h3>Licenses & Certifications</h3>
-
-      <!-- Sort Dropdown -->
-      <label for="certSort" style="font-size:0.9rem; margin-right:0.5rem;">Sort by:</label>
-      <select id="certSort" style="padding:0.3rem; border-radius:4px; margin-bottom:1rem;">
-        <option value="alpha">Alphabetical</option>
-        <option value="institution">Institution</option>
-      </select>
-
-      <!-- Certificates List -->
-      <ul id="certList" class="cert-list">
-        <li data-inst="PMI">Project Management Professional – PMI</li>
-        <li data-inst="Microsoft">Power BI Data Analyst – Microsoft</li>
-        <li data-inst="Coursera">Generative AI Specialization – Coursera</li>
-        <li data-inst="Coursera">Excel VBA for Business – Coursera</li>
-        <li data-inst="Udemy">Python for Data Science – Udemy</li>
-        <li data-inst="Tableau">Data Visualization Expert – Tableau</li>
-        <li data-inst="Qlik">Qlik Sense Business Analyst – Qlik</li>
-        <li data-inst="AWS">AWS Cloud Practitioner – Amazon Web Services</li>
+      <h3>Licenses & Certifications (31)</h3>
+      <ul class="cert-list">
+        <li>Alison – Diploma in Project Management</li>
+        <li>Dubai Future – Foundations of Emerging Tech</li>
+        <li>Google – Digital Marketing Fundamentals</li>
+        <li>Google – Introduction to Generative AI</li>
+        <li>Google – IT Automation with Python</li>
+        <li>Google – Project Management Foundations</li>
+        <li>Google – UX Design Foundations</li>
+        <li>Great Learning – Effective Communication</li>
+        <li>Great Learning – ML in AWS</li>
+        <li>IBM – Generative AI: Prompt Engineering Basics</li>
+        <li>IIBA – AI Chat Prompts for Business Analysis</li>
+        <li>IIBA – Excel: Economic Analysis & Data Analytics</li>
+        <li>IIBA – Generative AI for Business Analysts</li>
+        <li>IIBA – Learning Google Gemini for Business Analysis</li>
+        <li>IIBA – Regression Analysis Fundamentals</li>
+        <li>LinkedIn – Building a Personalized Chatbot with OpenAI & LangChain</li>
+        <li>LinkedIn – Complete Guide to Power BI for Data Analysts</li>
+        <li>LinkedIn – Excel Supply-Chain Analysis: Transportation Problems</li>
+        <li>LinkedIn – Excel with Copilot: AI-Driven Data Analysis</li>
+        <li>LinkedIn – Microsoft 365 Copilot for Work (2024)</li>
+        <li>LinkedIn – Sales Strategy: Using AI & Automation to Sell More</li>
+        <li>Microsoft – Generative AI for Sales with Microsoft 365 Copilot</li>
+        <li>NASBA – Creating Interactive Tableau Dashboards</li>
+        <li>NASBA – Interpersonal Communication</li>
+        <li>NASBA – Power BI Essential Training (2024)</li>
+        <li>NASBA – Tableau Essential Learning</li>
+        <li>PMI – Business Development Foundations</li>
+        <li>PMI – Critical Thinking & Problem Solving</li>
+        <li>SkillUp – Deep Learning</li>
+        <li>SkillUp – Intro to AI</li>
+        <li>SkillUp – Machine Learning</li>
       </ul>
     </div>
 
     <!-- RIGHT SIDE – SKILLS -->
     <div class="card">
-      <h3>Skills Matrix</h3>
+      <h3>Skills (45)</h3>
       <div class="skills-list">
-        <span>AI & Prompting</span>
-        <span>Analytics</span>
+        <span>AI for Business Analysis</span>
+        <span>AI for Sales</span>
+        <span>AI Productivity</span>
+        <span>Algorithms</span>
+        <span>Artificial Intelligence for Business</span>
         <span>Business Development</span>
-        <span>C Programming</span>
+        <span>Chatbot Development</span>
+        <span>Computer Programming</span>
+        <span>Critical Thinking</span>
+        <span>Data Analysis</span>
+        <span>Data Analytics</span>
         <span>Data Visualization</span>
-        <span>Excel VBA</span>
-        <span>Forecasting</span>
-        <span>Interpersonal Skills</span>
-        <span>MATLAB</span>
-        <span>Outlook Macros</span>
+        <span>Debugging</span>
+        <span>Economic Analysis</span>
+        <span>Effective Communication</span>
+        <span>Excel</span>
+        <span>Generative AI</span>
+        <span>IDEs</span>
+        <span>Interpersonal Communication</span>
+        <span>IRIS</span>
+        <span>LangChain</span>
+        <span>Leadership</span>
+        <span>Machine Learning</span>
+        <span>Microsoft Copilot</span>
+        <span>Multimodal Prompting</span>
+        <span>OpenAI Products</span>
         <span>Portfolio Analysis</span>
         <span>Power BI</span>
         <span>Process Improvement</span>
         <span>Programming (Python)</span>
         <span>Project Management</span>
+        <span>Prompt Engineering</span>
         <span>Qlik Sense</span>
+        <span>Rapid Learning</span>
+        <span>Regression Analysis</span>
+        <span>Sales Automation</span>
         <span>Sales Operations</span>
+        <span>Sales Strategy</span>
+        <span>Supply-Chain Analytics</span>
         <span>Tableau</span>
+        <span>Teamwork</span>
+        <span>Transportation Management</span>
+        <span>User Experience (UX)</span>
       </div>
 
       <h3 style="margin-top:1.5rem;">Languages</h3>
@@ -63,28 +102,3 @@
 
   </div>
 </section>
-
-<script>
-/* ---------- Certificate Sorting ---------- */
-const certSort = document.getElementById('certSort');
-const certList = document.getElementById('certList');
-
-certSort.addEventListener('change', () => {
-  const items = Array.from(certList.querySelectorAll('li'));
-  let sorted;
-
-  if (certSort.value === 'alpha') {
-    sorted = items.sort((a, b) => a.textContent.localeCompare(b.textContent));
-  } else {
-    sorted = items.sort((a, b) => {
-      const instA = a.dataset.inst.toLowerCase();
-      const instB = b.dataset.inst.toLowerCase();
-      if (instA === instB) return a.textContent.localeCompare(b.textContent);
-      return instA.localeCompare(instB);
-    });
-  }
-
-  certList.innerHTML = "";
-  sorted.forEach(li => certList.appendChild(li));
-});
-</script>
