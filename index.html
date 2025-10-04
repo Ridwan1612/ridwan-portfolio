@@ -167,6 +167,33 @@
       background: var(--acc);
       color: #fff;
     }
+
+  /* ---------- BACKGROUND GLOW EFFECT ---------- */
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(120px);
+    opacity: 0.35;
+    pointer-events: none;
+  }
+  
+  body::before {
+    top: -200px;
+    left: -200px;
+    background: radial-gradient(circle, var(--acc) 0%, transparent 70%);
+  }
+  
+  body::after {
+    bottom: -200px;
+    right: -200px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 70%);
+  }
+
   </style>
 </head>
 <body>
