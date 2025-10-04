@@ -6,54 +6,278 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <link rel="stylesheet" href="assets/css/morph.css?v=20251002"/>
   <style>
-    :root[data-theme="light"]{
-      --grad:linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
+    /* ---------- THEME GRADIENTS ---------- */
+    :root[data-theme="light"] {
+      --grad: linear-gradient(135deg, #e0f7fa 0%, #bbdefb 100%);
+      --glow: rgba(33, 150, 243, 0.8);
     }
-    :root[data-theme="dark"]{
-      --grad:linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+    :root[data-theme="dark"] {
+      --grad: linear-gradient(135deg, #0d1b2a 0%, #1b263b 100%);
+      --glow: rgba(79, 195, 247, 0.8);
     }
-    .hero{
-      background:var(--grad);
-      padding:4rem 1rem 3rem;
-      border-radius:16px;
-      margin-bottom:2rem;
-      text-align:center;
+
+    /* ---------- NAVBAR ---------- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 1rem 2rem;
+      background: rgba(13, 27, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-    .hero h1{font-size:2.6rem;margin-bottom:.5rem;}
-    .tag-line{
-      max-width:700px;margin:auto;
-      text-align:justify;text-justify:inter-word;
-      font-size:1.05rem;line-height:1.7;
+
+    nav a {
+      position: relative;
+      font-size: 1rem;
+      color: var(--txt);
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: color 0.3s ease;
     }
-    .glass{
-      background:rgba(255,255,255,.08);
-      backdrop-filter:blur(10px);
-      border:1px solid rgba(255,255,255,.15);
-      border-radius:12px;
-      padding:1.2rem;
-      transition:transform .25s;
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--acc);
+      transition: width 0.3s ease;
+      border-radius: 4px;
     }
-    .glass:hover{transform:translateY(-4px);}
-    .counter{font-size:2rem;font-weight:700;color:var(--acc);}
-    .edu-card{margin-top:1.5rem;}
-    .animate{opacity:0;transform:translateY(20px);transition:all .6s ease-out;}
-    .animate.show{opacity:1;transform:translateY(0);}
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: var(--acc);
+      text-shadow: 0 0 8px var(--glow), 0 0 16px var(--glow);
+      animation: glowPulse 2s infinite ease-in-out;
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { text-shadow: 0 0 6px var(--glow), 0 0 12px var(--glow); }
+      50% { text-shadow: 0 0 10px var(--glow), 0 0 24px var(--glow); }
+    }
+
+    nav a.active::after {
+      width: 100%;
+      background: var(--acc);
+    }
+
+    #themeToggle {
+      position: absolute;
+      right: 1.5rem;
+      background: var(--acc);
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 50%;
+      padding: 0.4rem 0.6rem;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    #themeToggle:hover {
+      transform: rotate(20deg);
+    }
+
+    /* ---------- HERO ---------- */
+    .hero {
+      background: var(--grad);
+      padding: 4rem 1rem 3rem;
+      border-radius: 16px;
+      margin: 2rem auto;
+      text-align: center;
+      max-width: 900px;
+      color: var(--txt);
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      margin-bottom: .5rem;
+      font-weight: 700;
+    }
+    .tag-line {
+      max-width: 700px;
+      margin: auto;
+      text-align: justify;
+      text-justify: inter-word;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    /* ---------- GENERAL STYLES ---------- */
+    .glass {
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 12px;
+      padding: 1.2rem;
+      transition: transform .25s;
+    }
+    .glass:hover { transform: translateY(-4px); }
+    .counter { font-size: 2rem; font-weight: 700; color: var(--acc); }
+    .edu-card { margin-top: 1.5rem; }
+    .animate { opacity: 0; transform: translateY(20px); transition: all .6s ease-out; }
+    .animate.show { opacity: 1; transform: translateY(0); }
+
+    /* ---------- BADGES ---------- */
+    .cert-badges, .skill-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+    }
+
+    .cert-chip {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      background: var(--card);
+      border: 1px solid var(--acc);
+      font-size: 0.85rem;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s;
+    }
+    .cert-chip.highlight, .cert-chip:hover {
+      background: #4caf50;
+      color: #fff;
+    }
+
+    .skill-chip {
+      display: inline-block;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+      background: var(--nav);
+      color: var(--txt);
+      font-size: 0.9rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .skill-chip.highlight-skill, .skill-chip:hover {
+      background: var(--acc);
+      color: #fff;
+    }
   </style>
 </head>
 <body>
+
+<!-- NAVIGATION -->
 <nav>
   <a href="#home" data-page="home">Home</a>
-  <a href="#exp"  data-page="exp">Experience</a>
-  <a href="#skill" data-page="skill">Skills&nbsp;&amp;&nbsp;Certs</a>
+  <a href="#exp" data-page="exp">Experience</a>
+  <a href="#skill" data-page="skill">Skills & Certs</a>
   <a href="#proj" data-page="proj">Projects</a>
   <a href="#lead" data-page="lead">Leadership</a>
   <button id="themeToggle">🌗</button>
 </nav>
 
+<!-- MAIN CONTAINER -->
 <main id="morphRoot" class="morph-container"></main>
 
 <script>
-/* ---------- DATA (Certs + Skills) ---------- */
+/* ---------- Active Link Highlight ---------- */
+function updateActiveNav() {
+  const hash = location.hash || "#home";
+  document.querySelectorAll("nav a").forEach(a => {
+    a.classList.toggle("active", a.getAttribute("href") === hash);
+  });
+}
+window.addEventListener("hashchange", updateActiveNav);
+window.addEventListener("DOMContentLoaded", updateActiveNav);
+
+/* ---------- MORPH ROUTER CORE ---------- */
+const root = document.getElementById("morphRoot");
+const cache = {};
+let io;
+
+async function loadPage(name){
+  if(cache[name]) return morph(cache[name], name);
+  const res = await fetch(`pages/${name}.html?v=20251002`);
+  const html = await res.text();
+  cache[name] = html;
+  morph(html, name);
+}
+
+function morph(newHTML, pageName){
+  root.style.opacity = 0;
+  setTimeout(()=>{
+    root.innerHTML = newHTML;
+    root.style.opacity = 1;
+    if(root.querySelector(".counter")) animateCounters();
+    attachAnimations();
+    attachExpToggles();
+    if(pageName === "skill") attachSkillPage();
+    updateActiveNav();
+  },250);
+}
+
+window.addEventListener("hashchange", ()=> loadPage(location.hash.slice(1)||"home"));
+loadPage("home");
+
+/* ---------- DARK MODE ---------- */
+const btn = document.getElementById("themeToggle");
+btn.onclick = ()=>{
+  const html = document.documentElement;
+  html.dataset.theme = html.dataset.theme === "light" ? "dark" : "light";
+  localStorage.setItem("theme", html.dataset.theme);
+};
+if(localStorage.theme) document.documentElement.dataset.theme = localStorage.theme;
+
+/* ---------- COUNTERS ---------- */
+function animateCounters(){
+  const counters = document.querySelectorAll(".counter");
+  counters.forEach(el=>{
+    const target = +el.dataset.target;
+    const inc = target / 60; let curr = 0;
+    const tick = ()=>{
+      curr += inc;
+      if(curr < target){ el.textContent = Math.floor(curr); requestAnimationFrame(tick); }
+      else el.textContent = target;
+    };
+    tick();
+  });
+}
+
+/* ---------- SCROLL ANIMATIONS ---------- */
+function attachAnimations(){
+  if(io) io.disconnect();
+  io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add("show"); });
+  }, {threshold:.3});
+  root.querySelectorAll(".animate").forEach(el=>io.observe(el));
+}
+
+/* ---------- EXPERIENCE TOGGLES ---------- */
+function attachExpToggles(){
+  root.querySelectorAll(".exp-card").forEach(card=>{
+    const btn = card.querySelector(".toggle-btn");
+    if(btn){
+      btn.addEventListener("click", ()=>{
+        card.classList.toggle("expanded");
+        btn.textContent = card.classList.contains("expanded") ? "Collapse ▲" : "Expand ▼";
+      });
+    }
+  });
+}
+
+/* ---------- SKILL PAGE INTERACTIONS ---------- */
+function attachSkillPage(){
+  renderCerts(certs);
+  renderSkills(skills);
+  attachSkillHighlights();
+}
+
+/* ---------- DATA ---------- */
 const certs = [
   "IIBA | AI Chat Prompts for Business Analysis",
   "LinkedIn | Building a Personalized Chatbot with OpenAI & LangChain",
@@ -86,7 +310,7 @@ const certs = [
   "Great Learning | Effective Communication",
   "Google | Digital Marketing Fundamentals",
   "Alison | Diploma in Project Management",
-  "Audi | Sales Operations Internship",
+  "Audi | Sales Operations Internship"
 ];
 
 const skills = [
@@ -97,290 +321,97 @@ const skills = [
   "Supply-Chain Analytics","Transportation Management","Power BI","Tableau","Excel",
   "Python","Algorithms","Debugging","IDEs","Computer Programming","Microsoft 365","User Experience (UX)",
   "Critical Thinking","Problem Solving","Interpersonal Communication","Effective Communication",
-  "Rapid Learning","Teamwork","Leadership","Sales Operations","IRIS","Qlik Sense",
+  "Rapid Learning","Teamwork","Leadership","Sales Operations","IRIS","Qlik Sense"
 ];
 
 /* ---------- CERT → SKILL MAP ---------- */
 const certSkillMap = {
-  "Introduction to Generative AI": ["Generative AI"],
-  "Sales Operations Internship": ["Sales Operations", "IRIS", "Qlik Sense", "Excel", "Python"],
-  "AI Chat Prompts for Business Analysis": ["AI for Business Analysis", "Prompt Engineering", "Business Development"],
-  "Building a Personalized Chatbot with OpenAI & LangChain": ["LangChain", "Chatbot Development", "OpenAI Products"],
+  "AI Chat Prompts for Business Analysis": ["AI for Business Analysis","Prompt Engineering","Business Development"],
+  "Building a Personalized Chatbot with OpenAI & LangChain": ["LangChain","Chatbot Development","OpenAI Products"],
   "Business Development Foundations": ["Business Development"],
-  "Complete Guide to Power BI for Data Analysts": ["Data Analysis", "Power BI"],
+  "Complete Guide to Power BI for Data Analysts": ["Data Analysis","Power BI"],
   "Creating Interactive Tableau Dashboards": ["Tableau"],
-  "Excel Supply-Chain Analysis: Transportation Problems": ["Transportation Management", "Excel", "Supply-Chain Analytics"],
-  "Excel with Copilot: AI-Driven Data Analysis": ["Microsoft Copilot", "AI for Business Analysis", "Excel"],
-  "Excel: Economic Analysis & Data Analytics": ["Economic Analysis", "Data Analytics", "Excel"],
-  "Generative AI for Business Analysts": ["Business Development", "AI for Business Analysis", "Generative AI"],
-  "Generative AI for Sales with Microsoft 365 Copilot": ["Microsoft 365", "Microsoft Copilot", "Artificial Intelligence for Business", "Generative AI"],
-  "Learning Google Gemini for Business Analysis": ["AI for Business Analysis", "AI Productivity", "Business Development", "Artificial Intelligence for Business"],
-  "Microsoft 365 Copilot for Work (2024)": ["Microsoft 365", "Microsoft Copilot"],
+  "Excel Supply-Chain Analysis: Transportation Problems": ["Transportation Management","Excel","Supply-Chain Analytics"],
+  "Excel with Copilot: AI-Driven Data Analysis": ["Microsoft Copilot","AI for Business Analysis","Excel"],
+  "Excel: Economic Analysis & Data Analytics": ["Economic Analysis","Data Analytics","Excel"],
+  "Generative AI for Business Analysts": ["Business Development","AI for Business Analysis","Generative AI"],
+  "Generative AI for Sales with Microsoft 365 Copilot": ["Microsoft 365","Microsoft Copilot","Artificial Intelligence for Business","Generative AI"],
+  "Learning Google Gemini for Business Analysis": ["AI for Business Analysis","AI Productivity","Business Development","Artificial Intelligence for Business"],
+  "Microsoft 365 Copilot for Work (2024)": ["Microsoft 365","Microsoft Copilot"],
   "Power BI Essential Training (2024)": ["Power BI"],
   "Regression Analysis Fundamentals": ["Regression Analysis"],
-  "Sales Strategy: Using AI & Automation to Sell More": ["Sales Strategy", "Sales Automation", "AI for Sales"],
-  "Tableau Essential Learning": ["Tableau", "Data Visualization", "Data Analytics"],
+  "Sales Strategy: Using AI & Automation to Sell More": ["Sales Strategy","Sales Automation","AI for Sales"],
+  "Tableau Essential Learning": ["Tableau","Data Visualization","Data Analytics"],
   "Interpersonal Communication": ["Interpersonal Communication"],
-  "Critical Thinking & Problem Solving": ["Critical Thinking", "Problem Solving"],
-  "Generative AI: Prompt Engineering Basics": ["Prompt Engineering", "Multimodal Prompting", "Generative AI"],
+  "Critical Thinking & Problem Solving": ["Critical Thinking","Problem Solving"],
+  "Generative AI: Prompt Engineering Basics": ["Prompt Engineering","Multimodal Prompting","Generative AI"],
   "UX Design Foundations": ["User Experience (UX)"],
-  "IT Automation with Python": ["Computer Programming", "Algorithms", "Debugging", "Python", "IDEs"],
+  "IT Automation with Python": ["Computer Programming","Algorithms","Debugging","Python","IDEs"],
   "Foundations of Project Management": ["Project Management"],
   "Effective Communication": ["Effective Communication"],
   "Diploma in Project Management": ["Project Management"]
 };
 
-/* ---------- Generate Reverse Map ---------- */
+/* ---------- Reverse Map ---------- */
 const skillCertMap = {};
-for (const [cert, skills] of Object.entries(certSkillMap)) {
-  skills.forEach(skill => {
-    if (!skillCertMap[skill]) skillCertMap[skill] = [];
+for(const [cert, skills] of Object.entries(certSkillMap)){
+  skills.forEach(skill=>{
+    if(!skillCertMap[skill]) skillCertMap[skill]=[];
     skillCertMap[skill].push(cert);
   });
 }
 
-/* ---------- router + morph ---------- */
-const root  = document.getElementById('morphRoot');
-const cache = {};
-let io;
-
-async function loadPage(name){
-  if(cache[name]) return morph(cache[name], name);
-  const res  = await fetch(`pages/${name}.html?v=20251002`);
-  const html = await res.text();
-  cache[name]= html;
-  morph(html, name);
-}
-
-function morph(newHTML, pageName){
-  root.style.opacity = 0;
-  setTimeout(()=>{
-    root.innerHTML = newHTML;
-    root.style.opacity = 1;
-    if(root.querySelector('.counter')) animateCounters();
-    attachAnimations();
-    if(pageName === 'exp') attachExpTimeline();
-    if(pageName === 'skill') attachSkillPage();
-  },250);
-}
-
-/* ---------- navigation ---------- */
-window.addEventListener('hashchange', ()=> loadPage(location.hash.slice(1)||'home'));
-loadPage('home');
-
-/* ---------- dark mode ---------- */
-const btn = document.getElementById('themeToggle');
-btn.onclick = ()=>{
-  const html = document.documentElement;
-  html.dataset.theme = html.dataset.theme === 'light' ? 'dark' : 'light';
-  localStorage.setItem('theme', html.dataset.theme);
-};
-if(localStorage.theme) document.documentElement.dataset.theme = localStorage.theme;
-
-/* ---------- counter animation ---------- */
-function animateCounters(){
-  const counters = document.querySelectorAll('.counter');
-  counters.forEach(el=>{
-    const target = +el.dataset.target;
-    const inc = target / 60; let curr = 0;
-    const tick = ()=>{
-      curr += inc;
-      if(curr < target) { el.textContent = Math.floor(curr); requestAnimationFrame(tick); }
-      else el.textContent = target;
-    };
-    tick();
-  });
-}
-
-/* ---------- scroll animations ---------- */
-function attachAnimations(){
-  if(io) io.disconnect();
-  io = new IntersectionObserver((entries)=>{
-    entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
-  }, {threshold:.3});
-  root.querySelectorAll('.animate').forEach(el=>io.observe(el));
-}
-
-/* ---------- experience timeline ---------- */
-function attachExpTimeline(){
-  root.querySelectorAll('.timeline-item').forEach(item=>{
-    const btn = item.querySelector('.toggle-btn');
-    if(btn){
-      btn.addEventListener('click', ()=>{
-        item.classList.toggle('expanded');
-        btn.textContent = item.classList.contains('expanded') ? 'Collapse ▲' : 'Expand ▼';
-      });
-    }
-  });
-}
-
-/* ---------- skills & certs renderer ---------- */
-function attachSkillPage(){
-  renderCerts(certs);
-  renderSkills(skills);
-  attachSkillHighlights();
-}
-
+/* ---------- SKILL/CERT RENDER + INTERACT ---------- */
 function renderCerts(list){
   list.sort((a,b)=> a.split(" | ")[1].localeCompare(b.split(" | ")[1]));
-  const certBadges = document.getElementById("certBadges");
-  certBadges.innerHTML = list.map(c=>{
-    const [org, name] = c.split(" | ");
+  document.getElementById("certBadges").innerHTML = list.map(c=>{
+    const [org,name]=c.split(" | ");
     return `<span class="cert-chip" data-cert="${name}">${name}</span>`;
   }).join("");
 }
 
 function renderSkills(list){
-  const skillBadges = document.getElementById("skillBadges");
-  skillBadges.innerHTML = list.map(s=>`<span class="skill-chip" data-skill="${s}">${s}</span>`).join("");
+  document.getElementById("skillBadges").innerHTML = list.map(s=>`<span class="skill-chip" data-skill="${s}">${s}</span>`).join("");
 }
 
 function attachSkillHighlights(){
-  const certEls = document.querySelectorAll('.cert-chip');
-  const skillEls = document.querySelectorAll('.skill-chip');
+  const certEls = document.querySelectorAll(".cert-chip");
+  const skillEls = document.querySelectorAll(".skill-chip");
 
-  // Cert → Skill highlight
   certEls.forEach(cert=>{
-    cert.addEventListener('mouseenter', ()=>{
-      cert.classList.add('highlight');
+    cert.addEventListener("mouseenter", ()=>{
+      cert.classList.add("highlight");
       const related = certSkillMap[cert.textContent];
       if(related){
         related.forEach(skill=>{
           const el = [...skillEls].find(s=>s.textContent===skill);
-          if(el) el.classList.add('highlight-skill');
+          if(el) el.classList.add("highlight-skill");
         });
       }
     });
-    cert.addEventListener('mouseleave', ()=>{
-      cert.classList.remove('highlight');
-      skillEls.forEach(s=>s.classList.remove('highlight-skill'));
+    cert.addEventListener("mouseleave", ()=>{
+      cert.classList.remove("highlight");
+      skillEls.forEach(s=>s.classList.remove("highlight-skill"));
     });
   });
 
-  // Skill → Cert highlight
   skillEls.forEach(skill=>{
-    skill.addEventListener('mouseenter', ()=>{
-      skill.classList.add('highlight-skill');
+    skill.addEventListener("mouseenter", ()=>{
+      skill.classList.add("highlight-skill");
       const related = skillCertMap[skill.textContent];
       if(related){
         related.forEach(cert=>{
           const el = [...certEls].find(c=>c.textContent===cert);
-          if(el) el.classList.add('highlight');
+          if(el) el.classList.add("highlight");
         });
       }
     });
-    skill.addEventListener('mouseleave', ()=>{
-      skill.classList.remove('highlight-skill');
-      certEls.forEach(c=>c.classList.remove('highlight'));
+    skill.addEventListener("mouseleave", ()=>{
+      skill.classList.remove("highlight-skill");
+      certEls.forEach(c=>c.classList.remove("highlight"));
     });
   });
 }
 </script>
-
-<style>
-/* Certificates as badges */
-.cert-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-.cert-chip {
-  display: inline-block;
-  padding: 0.35rem 0.75rem;
-  border-radius: 20px;
-  background: var(--card);
-  border: 1px solid var(--acc);
-  font-size: 0.85rem;
-  white-space: nowrap;
-  transition: background 0.2s, color 0.2s;
-}
-.cert-chip.highlight,
-.cert-chip:hover {
-  background: #4caf50;
-  color: #fff;
-}
-
-/* Skills as badges */
-.skill-badges {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-}
-.skill-chip {
-  display: inline-block;
-  padding: 0.35rem 0.75rem;
-  border-radius: 20px;
-  background: var(--nav);
-  color: var(--txt);
-  font-size: 0.9rem;
-  font-weight: 500;
-  white-space: nowrap;
-  transition: background 0.2s;
-}
-.skill-chip.highlight-skill,
-.skill-chip:hover {
-  background: var(--acc);
-  color: #fff;
-}
-
-/* ---------- TIMELINE LAYOUT ---------- */
-.timeline {
-  position: relative;
-  max-width: 1000px;
-  margin: 2rem auto;
-}
-.timeline::after {
-  content: '';
-  position: absolute;
-  width: 4px;
-  background: var(--acc);
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  margin-left: -2px;
-}
-.timeline-item {
-  padding: 1rem 2rem;
-  position: relative;
-  width: 50%;
-}
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  right: -10px;
-  background: var(--bg);
-  border: 4px solid var(--acc);
-  top: 1.2rem;
-  border-radius: 50%;
-  z-index: 1;
-}
-.timeline-item.left { left: 0; }
-.timeline-item.right { left: 50%; }
-.timeline-content {
-  padding: 1rem;
-  background: var(--card);
-  border-radius: 8px;
-  border: 1px solid rgba(255,255,255,.08);
-}
-.timeline-item.right::before {
-  left: -10px;
-}
-.date {
-  font-size: 0.9rem;
-  font-style: italic;
-  margin-bottom: 0.5rem;
-  color: var(--acc);
-}
-.exp-list .more {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease;
-}
-.timeline-item.expanded .more {
-  max-height: 1000px;
-}
-</style>
 </body>
 </html>
