@@ -243,6 +243,7 @@ function morph(newHTML, pageName){
     attachAnimations();
     attachExpToggles();
     if(pageName === "skill") attachSkillPage();
+    if(pageName === "apu") attachApuPage();   // <-- add this line
     updateActiveNav();
   },250);
 }
@@ -387,6 +388,42 @@ for(const [cert, skills] of Object.entries(certSkillMap)){
   });
 }
 
+function attachApuPage(){
+  const scope   = root.querySelector('#apu');
+  if(!scope) return;
+
+  const icons   = scope.querySelectorAll('.dock-icon');
+  const sections= scope.querySelectorAll('.apu-section');
+
+  const show = (id)=>{
+    sections.forEach(s=>{
+      s.classList.remove('visible');
+      s.setAttribute('aria-hidden','true');
+    });
+    const target = scope.querySelector('#'+id);
+    if(target){
+      target.classList.add('visible');
+      target.setAttribute('aria-hidden','false');
+    }
+  };
+
+  // default view
+  show('projects');
+
+  icons.forEach(icon=>{
+    const activate = ()=>{
+      icons.forEach(i=>i.classList.remove('active'));
+      icon.classList.add('active');
+      icon.classList.add('bouncing');
+      setTimeout(()=>icon.classList.remove('bouncing'), 450);
+      show(icon.dataset.section);
+    };
+    icon.addEventListener('click', activate);
+    icon.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' '){ e.preventDefault(); activate(); }});
+  });
+}
+
+  
 /* ---------- SKILL/CERT RENDER + INTERACT ---------- */
 function renderCerts(list){
   list.sort((a,b)=> a.split(" | ")[1].localeCompare(b.split(" | ")[1]));
