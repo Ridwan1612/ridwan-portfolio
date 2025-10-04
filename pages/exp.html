@@ -111,7 +111,6 @@
 
 .timeline-item.left {
   left: 0;
-  text-align: right;
 }
 
 .timeline-item.right {
@@ -126,11 +125,13 @@
   border: 1px solid rgba(255,255,255,.08);
   box-shadow: 0 2px 8px rgba(0,0,0,.2);
   transition: transform .3s;
+  text-align: left; /* force all content left aligned */
 }
 .timeline-content:hover {
   transform: translateY(-5px);
 }
 
+/* connector dots */
 .timeline-item::after {
   content: "";
   position: absolute;
@@ -167,6 +168,16 @@
   }
 }
 
+/* ---------- TEXT FORMATTING ---------- */
+.timeline-content p {
+  color: var(--acc);             /* ✅ make it blue */
+  font-style: italic;            /* ✅ italic */
+  text-decoration: underline;    /* ✅ underlined */
+  text-underline-offset: 3px;    /* spacing from text */
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+  
 /* ---------- EXPANDABLE CONTENT ---------- */
 .exp-list {
   list-style: disc;
