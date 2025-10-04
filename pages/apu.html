@@ -1,17 +1,17 @@
 <section id="apu" class="animate">
   <h2 class="apu-title">My University Journey at APU (February 2022 – February 2026)</h2>
 
-  <!-- MacOS-style Dock -->
+  <!-- macOS-style dock -->
   <div class="apu-dock">
-    <div class="dock-icon active" data-section="projects">📖<span>Projects</span></div>
-    <div class="dock-icon" data-section="activities">⚒️<span>Extracurricular</span></div>
+    <div class="dock-icon active" data-section="projects" tabindex="0" aria-label="Projects">📖<span>Projects</span></div>
+    <div class="dock-icon" data-section="activities" tabindex="0" aria-label="Extracurricular">⚒️<span>Extracurricular</span></div>
   </div>
 
-  <!-- PROJECTS SECTION -->
+  <!-- PROJECTS -->
   <div id="projects" class="apu-section visible">
     <h3 class="apu-subtitle">📘 Projects Timeline</h3>
-    <div class="timeline">
 
+    <div class="timeline">
       <!-- Soft Robotic Gripper -->
       <div class="timeline-item left animate">
         <div class="timeline-content card exp-card">
@@ -61,7 +61,7 @@
           <ul class="exp-list">
             <li>1. Modified GrabCAD model for manufacturability and tolerance optimization.</li>
             <li>2. Generated G-code and multi-axis toolpaths for CNC simulation in SolidWorks CAM.</li>
-            <li>3. Documented step-by-step machining strategy, tool selection, and inspection report.</li>
+            <li>3. Documented machining strategy, tool selection, and inspection report.</li>
           </ul>
         </div>
       </div>
@@ -87,16 +87,15 @@
           <ul class="exp-list">
             <li>1. Developed Excel VBA & Outlook macros automating stock flow, dealer reports, and KPIs.</li>
             <li>2. Created Streamlit dashboards and PyQt5 interfaces for data visualization and control.</li>
-            <li>3. Implemented dynamic file path generation, drag-and-drop imports, and progress indicators.</li>
+            <li>3. Implemented dynamic path generation, drag-and-drop imports, and progress indicators.</li>
           </ul>
         </div>
       </div>
-
     </div>
   </div>
 
-  <!-- EXTRACURRICULAR SECTION -->
-  <div id="activities" class="apu-section">
+  <!-- EXTRACURRICULAR -->
+  <div id="activities" class="apu-section" aria-hidden="true">
     <h3 class="apu-subtitle">⚒️ Extracurricular Activities</h3>
 
     <div class="card exp-card animate">
@@ -129,147 +128,42 @@
 </section>
 
 <style>
-/* ---------- PAGE STRUCTURE ---------- */
-.apu-title {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 2rem 0 1rem;
+/* ---------- scoped to #apu to avoid collisions ---------- */
+#apu .apu-title{ text-align:center;font-size:2rem;font-weight:700;margin:2rem 0 1rem; }
+#apu .apu-subtitle{ text-align:center;font-size:1.4rem;font-weight:600;margin:2rem 0 1rem;color:var(--acc); }
+
+/* Dock */
+#apu .apu-dock{ display:flex;justify-content:center;align-items:flex-end;gap:3rem;margin-bottom:1.5rem; }
+#apu .dock-icon{ font-size:2.5rem;cursor:pointer;transition:transform .25s ease, filter .25s; user-select:none; outline:none; }
+#apu .dock-icon span{ display:block;font-size:.85rem;text-align:center;margin-top:.3rem;color:var(--txt); }
+#apu .dock-icon:hover{ transform:scale(1.3); filter:drop-shadow(0 0 6px var(--acc)); }
+#apu .dock-icon.active{ transform:scale(1.4); filter:drop-shadow(0 0 10px var(--acc)); }
+#apu .dock-icon.bouncing{ animation:dock-bounce .45s ease; }
+@keyframes dock-bounce{
+  0%{ transform:scale(1.4) translateY(0); }
+  40%{ transform:scale(1.45) translateY(-8px); }
+  100%{ transform:scale(1.4) translateY(0); }
 }
 
-.apu-subtitle {
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin: 2rem 0 1rem;
-  color: var(--acc);
-}
+/* Sections */
+#apu .apu-section{ display:none; opacity:0; transition:opacity .45s ease; }
+#apu .apu-section.visible{ display:block; opacity:1; }
 
-/* ---------- DOCK STYLE ---------- */
-.apu-dock {
-  display: flex;
-  justify-content: center;
-  align-items: flex-end;
-  gap: 3rem;
-  margin-bottom: 2rem;
-}
+/* Timeline */
+#apu .timeline{ position:relative; max-width:1000px; margin:2rem auto; padding:2rem 0; }
+#apu .timeline::before{ content:""; position:absolute; width:4px; background:var(--acc); top:0; bottom:0; left:50%; transform:translateX(-50%); opacity:.4; }
+#apu .timeline-item{ position:relative; width:50%; padding:1rem 2rem; }
+#apu .timeline-item.left{ left:0; } 
+#apu .timeline-item.right{ left:50%; }
+#apu .timeline-content{ background:var(--card); border-radius:12px; padding:1.5rem; border:1px solid rgba(255,255,255,.1); text-align:left; }
+#apu .timeline-item::after{ content:""; position:absolute; width:16px; height:16px; background:var(--acc); border:3px solid var(--bg); border-radius:50%; top:25px; z-index:1; }
+#apu .timeline-item.left::after{ right:-8px; }
+#apu .timeline-item.right::after{ left:-8px; }
 
-.dock-icon {
-  font-size: 2.5rem;
-  cursor: pointer;
-  transition: transform 0.3s ease, filter 0.3s;
-  position: relative;
-  user-select: none;
-}
-.dock-icon span {
-  display: block;
-  font-size: 0.85rem;
-  text-align: center;
-  margin-top: 0.3rem;
-  color: var(--txt);
-}
-.dock-icon:hover {
-  transform: scale(1.3);
-  filter: drop-shadow(0 0 6px var(--acc));
-}
-.dock-icon.active {
-  transform: scale(1.4);
-  filter: drop-shadow(0 0 10px var(--acc));
-}
-
-/* ---------- SECTION VISIBILITY ---------- */
-.apu-section {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
-.apu-section.visible {
-  display: block;
-  opacity: 1;
-}
-
-/* ---------- TIMELINE STYLING ---------- */
-.timeline {
-  position: relative;
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 2rem 0;
-}
-.timeline::before {
-  content: "";
-  position: absolute;
-  width: 4px;
-  background: var(--acc);
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0.4;
-}
-.timeline-item {
-  position: relative;
-  width: 50%;
-  padding: 1rem 2rem;
-}
-.timeline-item.left { left: 0; }
-.timeline-item.right { left: 50%; }
-.timeline-content {
-  background: var(--card);
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid rgba(255,255,255,.1);
-  text-align: left;
-}
-.timeline-item::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background: var(--acc);
-  border: 3px solid var(--bg);
-  border-radius: 50%;
-  top: 25px;
-  z-index: 1;
-}
-.timeline-item.left::after { right: -8px; }
-.timeline-item.right::after { left: -8px; }
-
-@media(max-width:768px){
-  .timeline::before{left:8px;}
-  .timeline-item{width:100%;padding-left:2.5rem;}
-  .timeline-item.right{left:0;}
-  .timeline-item::after{left:0;}
+@media (max-width:768px){
+  #apu .timeline::before{ left:8px; transform:none; }
+  #apu .timeline-item{ width:100%; padding-left:2.5rem; }
+  #apu .timeline-item.right{ left:0; }
+  #apu .timeline-item::after{ left:0; right:auto; }
 }
 </style>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  const icons = document.querySelectorAll(".dock-icon");
-  const sections = document.querySelectorAll(".apu-section");
-
-  icons.forEach(icon => {
-    icon.addEventListener("click", () => {
-      // remove active class from all dock icons
-      icons.forEach(i => i.classList.remove("active"));
-      icon.classList.add("active");
-
-      // get target section id
-      const targetId = icon.dataset.section;
-
-      // hide all sections first
-      sections.forEach(sec => sec.classList.remove("visible"));
-
-      // show target section
-      const target = document.getElementById(targetId);
-      if (target) {
-        target.classList.add("visible");
-      }
-
-      // add small bounce animation (macOS-like)
-      icon.style.transform = "scale(1.4) translateY(-6px)";
-      setTimeout(() => icon.style.transform = "scale(1.3) translateY(0)", 200);
-      setTimeout(() => icon.style.transform = "scale(1.3)", 350);
-    });
-  });
-});
-</script>
