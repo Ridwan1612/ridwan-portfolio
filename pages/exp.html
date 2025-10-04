@@ -3,10 +3,10 @@
   <div class="timeline">
 
     <!-- Audi -->
-    <div class="timeline-item left">
-      <div class="timeline-content">
+    <div class="timeline-item left animate">
+      <div class="timeline-content card exp-card">
         <h3>Sales Operations Intern – Audi Middle East</h3>
-        <p class="date">Dubai, UAE | Jan – Jun 2025 | 5 months</p>
+        <p>Dubai, UAE | Jan – Jun 2025 | 5 months</p>
         <ul class="exp-list">
           <li>1. Contributed to Audi’s 2030 sales strategy with analyses & insights.</li>
           <li>2. Automated key reports using Excel VBA & Outlook (98% time saved).</li>
@@ -24,10 +24,10 @@
     </div>
 
     <!-- Porsche -->
-    <div class="timeline-item right">
-      <div class="timeline-content">
+    <div class="timeline-item right animate">
+      <div class="timeline-content card exp-card">
         <h3>Engineering Intern – Porsche Centre Mauritius</h3>
-        <p class="date">Mauritius | Nov 2024 – Jan 2025 | 3 months</p>
+        <p>Mauritius | Nov 2024 – Jan 2025 | 3 months</p>
         <ul class="exp-list">
           <li>1. Insight into technical & organisational service processes.</li>
           <li>2. Performed diagnostic procedures during fault finding.</li>
@@ -42,10 +42,10 @@
     </div>
 
     <!-- Air Mauritius -->
-    <div class="timeline-item left">
-      <div class="timeline-content">
+    <div class="timeline-item left animate">
+      <div class="timeline-content card exp-card">
         <h3>Technical Service Engineer – Air Mauritius</h3>
-        <p class="date">Plaine Magnien | Dec 2023 – Feb 2024 | 3 months</p>
+        <p>Plaine Magnien | Dec 2023 – Feb 2024 | 3 months</p>
         <ul class="exp-list">
           <li>1. Checked AD reports with ATA engineers before submission.</li>
           <li>2. Maintained Rolls Royce Trent 700 engine records in Maintenix.</li>
@@ -63,10 +63,10 @@
     </div>
 
     <!-- Rongai -->
-    <div class="timeline-item right">
-      <div class="timeline-content">
+    <div class="timeline-item right animate">
+      <div class="timeline-content card exp-card">
         <h3>Mechanical Engineering Intern – Rongai Workshop & Transport Ltd</h3>
-        <p class="date">Nakuru, Kenya | Nov 2022 – Feb 2023 | 4 months</p>
+        <p>Nakuru, Kenya | Nov 2022 – Feb 2023 | 4 months</p>
         <ul class="exp-list">
           <li>1. Assisted in vehicle maintenance & repairs, incl. diagnostics.</li>
           <li>2. Collected & analyzed data on performance & fuel efficiency.</li>
@@ -80,3 +80,121 @@
 
   </div>
 </section>
+
+<style>
+/* ---------- TIMELINE LAYOUT ---------- */
+.timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  width: 4px;
+  background: var(--acc);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.5;
+}
+
+/* ---------- TIMELINE ITEMS ---------- */
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 1rem 2rem;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
+.timeline-content {
+  position: relative;
+  background: var(--card);
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,.2);
+  transition: transform .3s;
+}
+.timeline-content:hover {
+  transform: translateY(-5px);
+}
+
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  background: var(--acc);
+  border: 3px solid var(--bg);
+  border-radius: 50%;
+  top: 25px;
+  z-index: 1;
+}
+.timeline-item.left::after {
+  right: -8px;
+}
+.timeline-item.right::after {
+  left: -8px;
+}
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 8px;
+  }
+  .timeline-item {
+    width: 100%;
+    padding-left: 2.5rem;
+    text-align: left;
+  }
+  .timeline-item.right {
+    left: 0;
+  }
+  .timeline-item::after {
+    left: 0;
+  }
+}
+
+/* ---------- EXPANDABLE CONTENT ---------- */
+.exp-list {
+  list-style: disc;
+  margin-left: 1.2rem;
+  overflow: hidden;
+}
+.exp-list .more {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.exp-card.expanded .more {
+  max-height: 1000px;
+}
+
+/* ---------- BUTTON ---------- */
+.toggle-btn {
+  margin-top: 0.8rem;
+  border: none;
+  background: var(--acc);
+  color: #fff;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background .2s;
+}
+.toggle-btn:hover {
+  opacity: 0.85;
+}
+</style>
