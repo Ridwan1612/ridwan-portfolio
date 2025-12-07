@@ -3,12 +3,22 @@
 
   <!-- macOS-style dock -->
   <div class="apu-dock">
-    <div class="dock-icon active" data-section="projects" tabindex="0" aria-label="Projects">📖<span>Projects</span></div>
-    <div class="dock-icon" data-section="activities" tabindex="0" aria-label="Extracurricular">⚒️<span>Extracurricular</span></div>
+    <div class="dock-icon active" data-section="projects" tabindex="0" aria-label="Projects">
+      📖
+      <span>Projects</span>
+    </div>
+    <div class="dock-icon" data-section="activities" tabindex="0" aria-label="Extracurricular">
+      ⚒️
+      <span>Extracurricular</span>
+    </div>
+    <div class="dock-icon" data-section="swot" tabindex="0" aria-label="SWOT Analysis">
+      📊
+      <span>SWOT</span>
+    </div>
   </div>
 
   <!-- PROJECTS -->
-  <div id="projects" class="apu-section visible">
+  <div id="projects" class="apu-section visible" aria-hidden="false">
     <h3 class="apu-subtitle">📘 Projects Timeline</h3>
 
     <div class="timeline">
@@ -125,155 +135,357 @@
       </ul>
     </div>
   </div>
+
+  <!-- SWOT -->
+  <div id="swot" class="apu-section" aria-hidden="true">
+    <h3 class="apu-subtitle">📊 SWOT & PLO Reflection</h3>
+
+    <div class="swot-wrapper">
+
+      <!-- Summary Table -->
+      <h4 class="swot-heading">Summary Table: Key Reflections and PLO Alignment</h4>
+      <table class="swot-table">
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>Key Focus</th>
+            <th>Related PLOs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Strengths</td>
+            <td>Technical proficiency, analytical reasoning, effective teamwork and communication</td>
+            <td>PLO1, PLO2, PLO5, PLO9, PLO10</td>
+          </tr>
+          <tr>
+            <td>Weaknesses</td>
+            <td>Sustainability awareness, documentation speed, regulatory familiarity, workload balance</td>
+            <td>PLO6, PLO7, PLO8, PLO11</td>
+          </tr>
+          <tr>
+            <td>Opportunities</td>
+            <td>Research participation, sustainability integration, professional networking</td>
+            <td>PLO3, PLO4, PLO6, PLO12</td>
+          </tr>
+          <tr>
+            <td>Threats</td>
+            <td>Rapid technological shifts, global competition, skill obsolescence risk</td>
+            <td>PLO5, PLO7, PLO11, PLO12</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Narrative blocks -->
+      <div class="swot-text">
+        <h4>Strengths</h4>
+        <p>
+          One of the main strengths was being able to use math and science to solve tricky engineering problems.
+          This was shown many times in modules like Robotics, Control Systems and CAD/CAM, where theory from class
+          was turned into real simulations and hands-on work. Good use of tools like SolidWorks, MATLAB and Altair
+          also made problem-solving and design work smoother. Being part of clubs helped too. Teamwork, communication
+          and leadership were all built up there, which ties in well with what PLO9 and PLO10 are all about.
+          Altogether, these things made analytical thinking stronger and helped with making solid technical decisions.
+        </p>
+
+        <h4>Weaknesses</h4>
+        <p>
+          A few weak spots were noticed, mostly in the planning and management side of engineering work.
+          More focus is still needed on things like cost, sustainability and the social or ethical side of projects
+          to keep a more balanced view. Time management and writing reports fast enough could also be improved,
+          especially when studies and club work happen at the same time. Knowing more about Malaysian engineering
+          laws and global safety standards would help too, just to stay fully up to date and professional.
+        </p>
+
+        <h4>Opportunities</h4>
+        <p>
+          All semesters bring chances to try more cross-discipline work and come up with new ideas. The final-year
+          project gives room to mix things like automation, safety and how people interact with machines.
+          APU’s research setup also makes it easier to work on projects that support sustainability and the UN goals.
+          Events like the Engineering Professional Development Series and workshops can help build stronger ethics
+          and steady career growth. Staying active in IMechE and IEEE is still useful too, since both groups open
+          doors for mentoring and real industry exposure.
+        </p>
+
+        <h4>Threats</h4>
+        <p>
+          The fast growth of AI, robotics and automation can make some skills go out of date pretty quick if learning
+          isn’t kept up. Competition in engineering is also getting tougher, so having a unique area of focus and being
+          able to adapt is super important. Depending too much on software tools can be risky too if the theory behind
+          them isn’t kept strong. Seeing all these outside risks makes it clear why lifelong learning, like what PLO12
+          talks about, really matters.
+        </p>
+      </div>
+
+      <!-- Official PLO Attainment Table -->
+      <h4 class="swot-heading">Official PLO Attainment Result</h4>
+      <table class="plo-table">
+        <thead>
+          <tr>
+            <th>PO1</th>
+            <th>PO2</th>
+            <th>PO3</th>
+            <th>PO4</th>
+            <th>PO5</th>
+            <th>PO6</th>
+            <th>PO7</th>
+            <th>PO8</th>
+            <th>PO9</th>
+            <th>PO10</th>
+            <th>PO11</th>
+            <th>PO12</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1.00</td>
+            <td>0.83</td>
+            <td>1.00</td>
+            <td>1.00</td>
+            <td>1.00</td>
+            <td>1.00</td>
+            <td>1.00</td>
+            <td>1.00</td>
+            <td>1.00</td>
+            <td>0.50</td>
+            <td>1.00</td>
+            <td>1.00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- Radar chart placeholder -->
+      <div class="plo-chart-placeholder">
+        <!-- When ready, replace src with your actual radar chart image -->
+        <!-- <img src="assets/img/plo-radar.png" alt="PLO Attainment Radar Chart"> -->
+        <p>PLO Attainment Radar Chart</p>
+        <span>Placeholder – add radar chart image or embed later.</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <style>
 /* ---------- scoped to #apu to avoid collisions ---------- */
-#apu .apu-title {
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  margin: 2rem 0 1rem;
-}
-#apu .apu-subtitle {
-  text-align: center;
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin: 2rem 0 1rem;
-  color: var(--acc);
+#apu .apu-title{
+  text-align:center;
+  font-size:2rem;
+  font-weight:700;
+  margin:2rem 0 1rem;
 }
 
-/* ---------- DOCK (center-aligned + bounce) ---------- */
-#apu .apu-dock {
-  display: flex;
-  justify-content: center;
-  align-items: center; /* ensures icons are vertically centered */
-  gap: 3rem;
-  margin-bottom: 1.5rem;
+#apu .apu-subtitle{
+  text-align:center;
+  font-size:1.4rem;
+  font-weight:600;
+  margin:2rem 0 1rem;
+  color:var(--acc);
 }
 
-/* Center the icons & text under each other */
-#apu .dock-icon {
-  display: flex;
-  flex-direction: column;     /* stack icon over text */
-  align-items: center;        /* center horizontally */
-  justify-content: center;    /* center vertically */
-  font-size: 2.5rem;
-  cursor: pointer;
-  transition: transform 0.25s ease, filter 0.25s;
-  user-select: none;
-  outline: none;
-  width: 80px;                /* uniform width for balance */
-  text-align: center;
-}
-#apu .dock-icon span {
-  display: block;
-  margin-top: 0.3rem;
-  font-size: 0.85rem;
-  color: var(--txt);
-  text-align: center;
-}
-#apu .dock-icon:hover {
-  transform: scale(1.3);
-  filter: drop-shadow(0 0 6px var(--acc));
-}
-#apu .dock-icon.active {
-  transform: scale(1.4);
-  filter: drop-shadow(0 0 10px var(--acc));
-}
-#apu .dock-icon.bouncing {
-  animation: dock-bounce 0.45s ease;
-}
-@keyframes dock-bounce {
-  0% { transform: scale(1.4) translateY(0); }
-  40% { transform: scale(1.45) translateY(-8px); }
-  100% { transform: scale(1.4) translateY(0); }
+/* Dock */
+#apu .apu-dock{
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  gap:3rem;
+  margin-bottom:1.5rem;
 }
 
-/* ---------- SECTION TOGGLE FADE ---------- */
-#apu .apu-section {
-  display: none;
-  opacity: 0;
-  transition: opacity 0.45s ease;
-}
-#apu .apu-section.visible {
-  display: block;
-  opacity: 1;
+#apu .dock-icon{
+  display:flex;                /* center icon + label vertically */
+  flex-direction:column;
+  align-items:center;
+  font-size:2.4rem;
+  cursor:pointer;
+  transition:transform .25s ease, filter .25s;
+  user-select:none;
+  outline:none;
 }
 
-/* ---------- TIMELINE ---------- */
-#apu .timeline {
-  position: relative;
-  max-width: 1000px;
-  margin: 2rem auto;
-  padding: 2rem 0;
+#apu .dock-icon span{
+  display:block;
+  font-size:.85rem;
+  text-align:center;
+  margin-top:.3rem;
+  color:var(--txt);
 }
-#apu .timeline::before {
-  content: "";
-  position: absolute;
-  width: 4px;
-  background: var(--acc);
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0.4;
+
+#apu .dock-icon:hover{
+  transform:scale(1.3);
+  filter:drop-shadow(0 0 6px var(--acc));
 }
-#apu .timeline-item {
-  position: relative;
-  width: 50%;
-  padding: 1rem 2rem;
+
+#apu .dock-icon.active{
+  transform:scale(1.4);
+  filter:drop-shadow(0 0 10px var(--acc));
 }
-#apu .timeline-item.left { left: 0; }
-#apu .timeline-item.right { left: 50%; }
-#apu .timeline-content {
-  background: var(--card);
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid rgba(255,255,255,.1);
-  text-align: left;
+
+#apu .dock-icon.bouncing{
+  animation:dock-bounce .45s ease;
 }
-#apu .timeline-item::after {
-  content: "";
-  position: absolute;
-  width: 16px;
-  height: 16px;
-  background: var(--acc);
-  border: 3px solid var(--bg);
-  border-radius: 50%;
-  top: 25px;
-  z-index: 1;
+
+@keyframes dock-bounce{
+  0%   { transform:scale(1.4) translateY(0); }
+  40%  { transform:scale(1.45) translateY(-8px); }
+  100% { transform:scale(1.4) translateY(0); }
 }
-#apu .timeline-item.left::after { right: -8px; }
-#apu .timeline-item.right::after { left: -8px; }
+
+/* Sections */
+#apu .apu-section{
+  display:none;
+  opacity:0;
+  transition:opacity .45s ease;
+}
+
+#apu .apu-section.visible{
+  display:block;
+  opacity:1;
+}
+
+/* Timeline */
+#apu .timeline{
+  position:relative;
+  max-width:1000px;
+  margin:2rem auto;
+  padding:2rem 0;
+}
+
+#apu .timeline::before{
+  content:"";
+  position:absolute;
+  width:4px;
+  background:var(--acc);
+  top:0;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  opacity:.4;
+}
+
+#apu .timeline-item{
+  position:relative;
+  width:50%;
+  padding:1rem 2rem;
+}
+
+#apu .timeline-item.left{ left:0; }
+#apu .timeline-item.right{ left:50%; }
+
+#apu .timeline-content{
+  background:var(--card);
+  border-radius:12px;
+  padding:1.5rem;
+  border:1px solid rgba(255,255,255,.1);
+  text-align:left;
+}
+
+#apu .timeline-item::after{
+  content:"";
+  position:absolute;
+  width:16px;
+  height:16px;
+  background:var(--acc);
+  border:3px solid var(--bg);
+  border-radius:50%;
+  top:25px;
+  z-index:1;
+}
+
+#apu .timeline-item.left::after{ right:-8px; }
+#apu .timeline-item.right::after{ left:-8px; }
 
 @media (max-width:768px){
-  #apu .timeline::before{ left:8px; transform:none; }
-  #apu .timeline-item{ width:100%; padding-left:2.5rem; }
-  #apu .timeline-item.right{ left:0; }
-  #apu .timeline-item::after{ left:0; right:auto; }
+  #apu .timeline::before{
+    left:8px;
+    transform:none;
+  }
+  #apu .timeline-item{
+    width:100%;
+    padding-left:2.5rem;
+  }
+  #apu .timeline-item.right{
+    left:0;
+  }
+  #apu .timeline-item::after{
+    left:0;
+    right:auto;
+  }
+}
+
+/* ---------- SWOT & PLO STYLES ---------- */
+#apu .swot-wrapper{
+  max-width:900px;
+  margin:0 auto 3rem;
+}
+
+#apu .swot-heading{
+  margin-top:1.5rem;
+  font-size:1.1rem;
+  font-weight:600;
+}
+
+#apu .swot-table,
+#apu .plo-table{
+  width:100%;
+  border-collapse:collapse;
+  margin:1rem 0 1.5rem;
+  font-size:0.95rem;
+}
+
+#apu .swot-table th,
+#apu .swot-table td,
+#apu .plo-table th,
+#apu .plo-table td{
+  border:1px solid rgba(255,255,255,.18);
+  padding:0.6rem 0.8rem;
+  text-align:left;
+}
+
+#apu .swot-table thead th,
+#apu .plo-table thead th{
+  background:rgba(255,255,255,.04);
+  font-weight:600;
+}
+
+#apu .swot-table tbody tr:nth-child(even),
+#apu .plo-table tbody tr:nth-child(even){
+  background:rgba(255,255,255,.02);
+}
+
+#apu .swot-text h4{
+  margin-top:1.2rem;
+  margin-bottom:0.4rem;
+  font-size:1rem;
+}
+
+#apu .swot-text p{
+  margin-bottom:0.7rem;
+  line-height:1.6;
+  font-size:0.96rem;
+}
+
+/* Radar chart placeholder */
+#apu .plo-chart-placeholder{
+  margin-top:1.5rem;
+  padding:1.5rem;
+  border:2px dashed rgba(255,255,255,.25);
+  border-radius:12px;
+  text-align:center;
+  font-size:0.95rem;
+  min-height:180px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  gap:0.35rem;
+  opacity:0.9;
+}
+
+#apu .plo-chart-placeholder p{
+  font-weight:600;
+}
+
+#apu .plo-chart-placeholder span{
+  font-style:italic;
+  opacity:0.8;
 }
 </style>
-
-<script>
-document.querySelectorAll("#apu .dock-icon").forEach(icon=>{
-  icon.addEventListener("click", ()=>{
-    document.querySelectorAll("#apu .dock-icon").forEach(i=>i.classList.remove("active"));
-    icon.classList.add("active", "bouncing");
-
-    // Smooth fade between sections
-    const section = icon.dataset.section;
-    document.querySelectorAll("#apu .apu-section").forEach(s=>{
-      s.classList.remove("visible");
-      s.setAttribute("aria-hidden","true");
-    });
-    const target = document.querySelector(`#apu #${section}`);
-    if(target){
-      target.classList.add("visible");
-      target.setAttribute("aria-hidden","false");
-    }
-
-    setTimeout(()=>icon.classList.remove("bouncing"), 450);
-  });
-});
-</script>
